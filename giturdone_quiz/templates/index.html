@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<body lang="en">
+<head>
+<!--<link rel="stylesheet" type="text/css" href="/static/css/my_site_style.css">-->
+    <meta charset="UTF-8">
+    <title>Git UR Done</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<style>
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: blue;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active {
+    color: purple;
+    background-color: transparent;
+    text-decoration: underline;
+}
+</style>
+
+<body>
+
+<!--
+<div class="w3-container w3-blue">
+{% if request.user.is_authenticated %}
+  <h1>Welcome, {% if request.user.first_name %}
+      {{ request.user.first.name }}
+      {% else %}
+      {{ request.user.username }}
+      {% endif %}
+      To Travel Expense Estimator
+  </h1>
+{% else %}
+{% endif %}
+<img src="/static/images/hot_air_balloon.png" style="width:50px;height:50px;">
+</div>
+-->
+
+
+
+
+<div class="w3-container w3-red">
+{% if request.user.is_authenticated %}
+  <h1>Welcome {% if request.user.first_name %}
+      {{ request.user.first.name }}
+      {% else %}
+      {{ request.user.username }}
+      {% endif %}
+      - To Travel Expense Estimator<br>
+      <img src="/static/images/git.png" style="width:50px;height:50px;">-->
+  </h1>
+{% else %}
+<h1> Welcome To Git Ur Done</h1> <img src="/static/images/git.png" style="width:50px;height:50px;">
+{% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+<div class="w3-container w3-blue">
+<img src="/static/images/dj.png" style="width:25" align="right">
+
+<br>
+<h3>
+<p><a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/account/register" target="_blank">Register</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>                                                 </p>
+</h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p><center>What in the world is Git Ur Done?  Git Ur Done is a web software application written by Gil Rael using the Python Django Web Framework<br>
+that tests your knowledge and helps you to learn to use Git.  What is Git?  Git is a software version control system<br>used by software engineers in software development projects.<br>
+<br>
+Please, register in order to begin using Git Ur Done.  Once, you have registered<br>
+you can begin to use the application to learn Git version control.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</center>
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="w3-container w3-red">
+  <h5>
+
+  </h5>
+  <p><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
+Software Written By A Nerd For Nerds</center></p>
+</div>
+</head>
+</body>
+</html>
