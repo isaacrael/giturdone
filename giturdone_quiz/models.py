@@ -23,5 +23,5 @@ class Answer(models.Model):
     answer_text = models.CharField(max_length=200)
 
     def __unicode__(self):
-        return self.choice_text
+        return self.answer_text
 
