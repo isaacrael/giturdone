@@ -21,6 +21,7 @@ class Question(models.Model):
 class Answer(models.Model):
     question = models.ForeignKey(Question)
     answer_text = models.CharField(max_length=200)
+    answers = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.answer_text
