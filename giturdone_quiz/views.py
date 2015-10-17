@@ -47,9 +47,3 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/results.html', {'question': question})
 
-
-
-"""
-def git_quiz(request):
-    return render(request, 'giturdone_quiz/index.html')
-"""
