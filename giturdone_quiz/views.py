@@ -28,7 +28,7 @@ def detail(request, question_id):
 def answer(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     try:
-        selected_choice = p.choice_set.get(pk=request.POST['choice'])
+        selected_choice = p.answer_set.get(pk=request.POST['answer'])
     except (KeyError, Answer.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'giturdone_quiz/detail.html', {
