@@ -1,4 +1,4 @@
-Greetings,
+Greetings {{ user }},
 
 You just signed up for an account at {{site.name}}.  Please click the link below to activate it.
 http://{{ site.domain }}{% url 'registration_activate' activation_key %}

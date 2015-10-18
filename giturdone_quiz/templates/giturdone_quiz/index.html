@@ -30,25 +30,43 @@ a:active {
 
 </head>
 <body>
-
-<div class="w3-container w3-blue">
-  <h1>Welcome To Git Ur Done</h1><img src="/static/images/git.png" style="width:50px;height:50px;">
+<div class="w3-container w3-red">
+{% if request.user.is_authenticated %}
+  <h1>Welcome {% if request.user.first_name %}
+      {{ request.user.first.name }}
+      {% else %}
+      {{ request.user.username }}
+      {% endif %}
+      - To Git Ur Done<br>
+      <img src="/static/images/git.png" style="width:50px;height:50px;">
+  </h1>
+{% else %}
+<h1> Welcome To Git Ur Done</h1> <img src="/static/images/git.png" style="width:50px;height:50px;">
+{% endif %}
 </div>
 
 
+
 <div class="w3-container w3-yellow">
-<img src="/static/images/python_django_gil.png" style="width:25" align="right">
-
+<img src="/static/images/dj.png" style="width:25" align="right">
 <br>
+{% if request.user.is_authenticated %}
 <h3>
-<p><a href="http://localhost:8000/" target="_blank">About</a>  <a href="http://localhost:8000/quiz/resources/"target="_blank" >Resources</a>  <a href="http://localhost:8000/account/logout/"target="_blank" >Logout</a>                                             </p>
+<a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/quiz/" target="_blank">Quiz</a>  <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources</a>  <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
 </h3>
+{% else %}
+<h3>
+<a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/account/register" target="_blank">Register</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>
+</h3>
+{% endif %}
 <br>
 <br>
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
 <center>Ok let's Git started and test your Git knowledge and at the same time learn some Git.
 <br>
 <br>

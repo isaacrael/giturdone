@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Git Resources</title>
+    <title>Git Quiz Results</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <style>
@@ -46,6 +46,7 @@ a:active {
 </div>
 
 
+
 <div class="w3-container w3-yellow">
 <img src="/static/images/dj.png" style="width:25" align="right">
 <br>
@@ -62,14 +63,6 @@ a:active {
 <br>
 <br>
 <br>
-<h3><center>Git Videos & Presentations</center></h3>
-<br>
-<br><ul><li><a href="https://www.youtube.com/watch?v=idLyobOhtO4 target="_blank">Linus Torvalds Presentation @ Google On Git</a></li>
-<br>
-<br><li><a href="https://www.youtube.com/watch?v=U8GBXvdmHT4 target="_blank">Basics Of Git & Github</a></li>
-<br>
-<br><li><a href="https://www.youtube.com/watch?v=OFkgSjRnay4 target="_blank">O'Reilly Webcast: Git in One Hour</a></li>
-<br></ul>
 <br>
 <br>
 <br>
@@ -77,10 +70,14 @@ a:active {
 <br>
 <br>
 <br>
-<h3><center>Git Websites</center></h3>
-<br>
-<br><ul><li><a href="https://git-scm.com/"_blank">Git SCM</a></li>
-<br></ul>
+<center>
+<h2>{{ question.question_text }}</h2>
+<ul>
+{% for answer in question.answer_set.all %}
+    <li>{{ answer.answer_text }} -- {{ answer.answers }} answer{{ answer.answers|pluralize }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'giturdone_quiz:detail' question.id %}">Next Question?</a>
 <br>
 <br>
 <br>
@@ -113,6 +110,13 @@ a:active {
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</center>
 </p>
 </div>
 <div class="w3-container w3-blue">
@@ -125,4 +129,3 @@ Software Developed By A Nerd For Nerds</center></p>
 </head>
 </body>
 </html>
-

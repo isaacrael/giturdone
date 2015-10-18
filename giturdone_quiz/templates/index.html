@@ -67,19 +67,18 @@ a:active {
 
 
 
-
-
-
-
-
-
 <div class="w3-container w3-blue">
 <img src="/static/images/dj.png" style="width:25" align="right">
-
 <br>
+{% if request.user.is_authenticated %}
 <h3>
-<p><a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/account/register" target="_blank">Register</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>                                                 </p>
+<a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/quiz/" target="_blank">Quiz</a>  <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources</a>  <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
 </h3>
+{% else %}
+<h3>
+<a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/account/register" target="_blank">Register</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>
+</h3>
+{% endif %}
 <br>
 <br>
 <br>
