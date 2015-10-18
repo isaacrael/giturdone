@@ -30,10 +30,10 @@ def answer(request, question_id):
     try:
         selected_choice = p.answer_set.get(pk=request.POST['answer'])
     except (KeyError, Answer.DoesNotExist):
-        # Redisplay the question voting form.
+        # Redisplay the question answer form.
         return render(request, 'giturdone_quiz/detail.html', {
             'question': p,
-            'error_message': "You didn't select a choice.",
+            'error_message': "You didn't select an answer.",
         })
     else:
         selected_choice.answers += 1
