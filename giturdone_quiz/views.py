@@ -21,9 +21,6 @@ def git_quiz(request):
 def git_resources(request):
         return render(request, 'giturdone_quiz/resources.html')
 
-
-
-
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/detail.html', {'question': question})
