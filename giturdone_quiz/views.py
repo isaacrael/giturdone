@@ -13,11 +13,15 @@ from .models import Answer, Question
 def index(request):
     return render(request, 'index.html')
 
-
 def git_quiz(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
     return render(request, 'giturdone_quiz/index.html', context)
+
+def git_resources(request):
+        return render(request, 'giturdone_quiz/resources.html')
+
+
 
 
 def detail(request, question_id):
