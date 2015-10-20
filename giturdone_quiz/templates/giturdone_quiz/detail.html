@@ -68,7 +68,7 @@ a:active {
 <br>
 <br>
 <br>
-<center>Ok let's Git started and test your Git knowledge and at the same time learn some Git.
+<center>
 <br>
 <br>
 <br>
@@ -76,14 +76,18 @@ a:active {
 <h2>{{ question.question_text }}</h2>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
 <form action="{% url 'giturdone_quiz:answer' question.id %}" method="post">
 {% csrf_token %}
 {% for answer in question.answer_set.all %}
+    {% if answer = "distributed" %}
+    <h3>Correct!</h3>
+    {% endif %}
+    <h3>The answer is {{ answer.answer_text }} the question is {{ question.question_text }}</h3>
     <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
     <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br />
+    <input type="submit" value="Submit Answer(s)" />
 {% endfor %}
-<input type="submit" value="Submit Answer(s)" />
+
 </form>
 <br>
 <br>

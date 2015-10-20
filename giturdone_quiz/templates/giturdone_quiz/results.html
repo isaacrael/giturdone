@@ -75,9 +75,15 @@ a:active {
 <ul>
 {% for answer in question.answer_set.all %}
     <li>{{ answer.answer_text }} -- {{ answer.answers }} answer{{ answer.answers|pluralize }}</li>
+    {% if answer == answer.correct_answer %}
+        <h3>Correct!</h3>
+    {% else %}
+        <h3>Wrong...The correct answer is {{ answer }}</h3>
+    {% endif %}
 {% endfor %}
 </ul>
 <a href="{% url 'giturdone_quiz:detail' question.id %}">Next Question?</a>
+
 <br>
 <br>
 <br>

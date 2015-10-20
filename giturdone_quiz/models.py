@@ -28,6 +28,8 @@ class Answer(models.Model):
     question = models.ForeignKey(Question)
     answer_text = models.CharField(max_length=200)
     answers = models.IntegerField(default=0)
+    correct_answer = models.CharField(max_length=200, default='Linus Torvalds')
+# on results page if answer == correct_answer
 
     def __unicode__(self):
         return self.answer_text

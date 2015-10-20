@@ -76,12 +76,12 @@ a:active {
     <ul>
     {% for question in latest_question_list %}
         <li><a href="{% url 'giturdone_quiz:detail' question.id %}">{{ question.question_text }}</a></li>
+        <h3>The answer is {{ answer.answer_text }} the question is {{ question.question_text }}</h3>
     {% endfor %}
     </ul>
 {% else %}
     <p>No questions are available.</p>
 {% endif %}
-
 <br>
 <br>
 <br>

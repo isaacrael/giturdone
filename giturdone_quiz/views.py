@@ -5,7 +5,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from .models import Answer, Question
+from . models import Answer, Question
 
 
 # Create your views here.
