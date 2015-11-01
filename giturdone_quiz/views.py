@@ -6,16 +6,23 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from . models import Answer, Question
+import random
 
 
 # Create your views here.
 
+
 def index(request):
     return render(request, 'index.html')
 
+
 def git_quiz(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
+    questions = Question.objects.all()[:5]
+    question = random.choice(questions)
+#    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {'questions': questions}
+#    questions = list(question_answer.keys())
+#    question = random.choice(questions)
     return render(request, 'giturdone_quiz/index.html', context)
 
 def git_resources(request):
@@ -43,6 +50,7 @@ def answer(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('giturdone_quiz:results', args=(p.id,)))
+
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
