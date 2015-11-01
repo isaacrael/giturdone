@@ -72,13 +72,12 @@ a:active {
 <br>
 <center>
 <h2>{{ question.question_text }}</h2>
+<h2>{{ value }}</h2>
 <ul>
 {% for answer in question.answer_set.all %}
-    <li>{{ answer.answer_text }} -- {{ answer.answers }} answer{{ answer.answers|pluralize }}</li>
-    {% if answer == answer.correct_answer %}
-        <h3>Correct!</h3>
-    {% else %}
-        <h3>Wrong...The correct answer is {{ answer }}</h3>
+    {{ answer.id }}
+    {% if answer.answer_text == answer.correct_answer %}
+        <h3 style="color:green">Correct!...The correct answer is {{ answer.correct_answer }}</h3>
     {% endif %}
 {% endfor %}
 </ul>
