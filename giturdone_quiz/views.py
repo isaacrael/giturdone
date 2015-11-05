@@ -17,8 +17,8 @@ def index(request):
 
 
 def git_quiz(request):
-    questions = Question.objects.all()[:5]
-    question = random.choice(questions)
+    questions = list(Question.objects.all())
+    question = random.shuffle(questions)
 #    latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'questions': questions}
 #    questions = list(question_answer.keys())
@@ -50,9 +50,16 @@ def answer(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('giturdone_quiz:results', args=(p.id,)))
-
-
+"""
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/results.html', {'question': question})
+"""
+
+def results(request):
+    if request.method == 'POST':
+        answer = request.POST.get('name', None)
+    return render(request, 'giturdone_quiz/results.html')
+
+
 
