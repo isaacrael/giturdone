@@ -64,9 +64,6 @@ a:active {
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 <!--Ok let's Git started and test your Git knowledge and at the same time learn some Git.-->
 <center>
 <br>
@@ -75,15 +72,16 @@ a:active {
 <br>
 {% if questions %}
    <h3>{{ questions.1 }} </h3>
-    <form method="post">
+    <form method="POST"   action="/results/">
   {% csrf_token %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Answer:</label>
-<input class="textinput textInput form-control" id="id_name" maxlength="100" name="name" type="text" /></p>
+<input class="textinput textInput form-control" id="id_name" maxlength="100" name="textfield" type="text" /></p>
   <input type="submit" value="Submit" />
+        <h3>{{ field.id_name }}</h3>
 </form>
 {% endif %}
-    <h3>{{ id_name }}</h3>
+    <h3>{{ answer }}</h3>
     {% if id_name = correct_answer %}
         {{ name }}
     {% endif %}
