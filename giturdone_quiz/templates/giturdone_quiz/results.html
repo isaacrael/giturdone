@@ -71,19 +71,18 @@ a:active {
 <br>
 <br>
 <center>
-<h2>{{ question.question_text }}</h2>
-<h2>{{ value }}</h2>
-<ul>
+
+<h2>{{ questions.1 }}</h2>
+<h2>Your answer was ......{{ results.answer }}</h2>
+{% if user_answer == answer.correct_answer %}
+    <h2>It Works!</h2>
+{% endif %}
 {% for answer in question.answer_set.all %}
-    {{ answer.id }}
-    {% if answer.answer_text == answer.correct_answer %}
+    {% if answer == answer.correct_answer %}
         <h3 style="color:green">Correct!...The correct answer is {{ answer.correct_answer }}</h3>
     {% endif %}
 {% endfor %}
-</ul>
-<a href="{% url 'giturdone_quiz:detail' question.id %}">Next Question?</a>
 
-<br>
 <br>
 <br>
 <br>
