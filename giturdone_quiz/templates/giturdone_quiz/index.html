@@ -72,7 +72,8 @@ a:active {
 <br>
 {% if questions %}
    <h3>{{ questions.1 }} </h3>
-    <form method="POST"   action="results/">
+    <form action="{% url 'giturdone_quiz:results' question.id %}" method="post">
+{% comment %}    <form method="POST"   action="results/"> {% endcomment %}
   {% csrf_token %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Answer:</label>
