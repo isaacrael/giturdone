@@ -28,6 +28,10 @@ def git_quiz(request):
 def git_resources(request):
         return render(request, 'giturdone_quiz/resources.html')
 
+
+
+"""
+
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/detail.html', {'question': question})
@@ -50,17 +54,21 @@ def answer(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('giturdone_quiz:results', args=(p.id,)))
+
+"""
+
 """
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/results.html', {'question': question})
 """
 
-def results(request):
+def results(request, question_id):
     if request.method == 'POST':
+        question = get_object_or_404(Question, pk=question_id)
         user_answer = request.POST.get('textfield', None)
         value = "gil"
-    return render(request, 'giturdone_quiz/results.html', {'answer': user_answer})
+    return render(request, 'giturdone_quiz/results.html', {'answer': user_answer}, {'question': question})
 
 
 
