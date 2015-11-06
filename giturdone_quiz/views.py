@@ -58,8 +58,9 @@ def results(request, question_id):
 
 def results(request):
     if request.method == 'POST':
-        answer = request.POST.get('name', None)
-    return render(request, 'giturdone_quiz/results.html')
+        user_answer = request.POST.get('textfield', None)
+        value = "gil"
+    return render(request, 'giturdone_quiz/results.html', {'answer': user_answer})
 
 
 
