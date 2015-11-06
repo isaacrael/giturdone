@@ -72,16 +72,26 @@ a:active {
 <br>
 <center>
 
-<h2>{{ questions.1 }}</h2>
-<h2>Your answer was ......{{ results.answer }}</h2>
-{% if user_answer == answer.correct_answer %}
-    <h2>It Works!</h2>
-{% endif %}
+
 {% for answer in question.answer_set.all %}
+    <h2>Test This Bitch!</h2>
     {% if answer == answer.correct_answer %}
         <h3 style="color:green">Correct!...The correct answer is {{ answer.correct_answer }}</h3>
     {% endif %}
 {% endfor %}
+
+
+
+
+<h2>{{ questions.1 }}</h2>
+<h2>{{ answer.correct_answer }}</h2>
+<h2>Your answer was ......{{ answer }}</h2>
+{% if answer = answer.correct_answer %}
+    <h2>Correct!</h2>
+{% else %}
+    <h2>Wrong!</h2>
+{% endif %}
+
 
 <br>
 <br>
