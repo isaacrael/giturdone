@@ -70,17 +70,16 @@ a:active {
 <br>
 <br>
 <br>
-{% if questions %}
-   <h3>{{ questions.1 }} </h3>
-    <form action="{% url 'giturdone_quiz:results' question.id %}" method="post">
-{% comment %}    <form method="POST"   action="results/"> {% endcomment %}
-  {% csrf_token %}
-  <table>{{ form.as_table }}</table>
-   <p><label for="id_name"> Answer:</label>
-<input class="textinput textInput form-control" id="id_name" maxlength="100" name="textfield" type="text" /></p>
-  <input type="submit" value="Submit" />
-</form>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'giturdone_quiz:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
 {% endif %}
+
 <br>
 <br>
 <br>
