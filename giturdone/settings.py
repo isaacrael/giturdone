@@ -52,6 +52,23 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+
+# Include the context processor function 'get_current_time'
+# from hello.py within the app package.
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'giturdon_quiz.views.get_current_time',
+)
+
+
+
+
+
+
+
+
+
+
+
 ROOT_URLCONF = 'giturdone.urls'
 
 TEMPLATES = [
