@@ -76,18 +76,18 @@ a:active {
 <h2>{{ question.question_text }}</h2>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'giturdone_quiz:answer' question.id %}" method="post">
+<form action="{% url 'giturdone_quiz:results' question.id %}" method="post">
 {% csrf_token %}
 {% for answer in question.answer_set.all %}
-    {% if answer = "distributed" %}
+    {% if answer = answer.correct_answer %}
     <h3>Correct!</h3>
     {% endif %}
-    <h3>The answer is {{ answer.answer_text }} the question is {{ question.question_text }}</h3>
-    <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
-    <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br />
-    <input type="submit" value="Submit Answer(s)" />
+<!--    <h3>The answer is {{ answer.answer_text }} the question is {{ question.question_text }}</h3>-->
 {% endfor %}
-
+  <table>{{ form.as_table }}</table>
+   <p><label for="id_name"> Answer:</label>
+<input class="textinput textInput form-control" id="id_name" maxlength="100" name="textfield" type="text" /></p>
+  <input type="submit" value="Submit" />
 </form>
 <br>
 <br>
