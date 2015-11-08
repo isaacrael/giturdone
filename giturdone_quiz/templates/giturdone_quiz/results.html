@@ -72,16 +72,11 @@ a:active {
 <br>
 <center>
 {{ context }}
-{{% answer|stringformat:"s" %}}
 
 <br>
 <br>
 <br>
 {% for answer_text in question.answer_set.all %}
-    {{% answer_text|stringformat:"s" %}}
-    <h2> {{ answer_text }} </h2>
-
-    <h2> {{ answer }}</h2>
     {% if answer_text == answer %}
         <h3 style="color:green">Correct!...The correct answer is {{ answer }}.... ...{{ answer }}</h3>
     {% endif %}
