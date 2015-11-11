@@ -97,10 +97,11 @@ def results(request, question_id):
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
         user_answer = request.POST.get('textfield', None)
+        str(user_answer)
         q = Question.objects.get(pk=question_id)
         a = q.answer_set.all()
-        L = ['L','i','n','u','s','','T','o','r','v','a','l','d','s']
-        correct_answer = ' '.join(map(str, L))
+        correct_answer = a[1]
+        str(correct_answer)
         # correct_answer = answer.correct_answer
         context = {'latest_question_list': latest_question_list, 'answer': user_answer, 'question': question, 'correct_answer': correct_answer}
         value = "gil"
