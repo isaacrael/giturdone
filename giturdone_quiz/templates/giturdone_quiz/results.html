@@ -71,25 +71,21 @@ a:active {
 <br>
 <br>
 <center>
-{{ context }}
-{{ correct_answer|stringformat:"s" }}
-{{ answer|stringformat:"s" }}
-{{ answer.0 }}
-{{ correct_answer.1 }}
-<h2>This is the {{ correct_answer }} ...... {{ right_answer }}</h2>
 {% if correct_answer == answer %}
-    <h2>True</h2>
+    <h2>I Love Ipython Notebook! :>)</h2>
 {% endif %}
 <br>
 <br>
 <br>
     {% if correct_answer == answer %}
-        <h3 style="color:green">Correct!...The correct answer is {{ answer }}.... ...{{ answer }}</h3>
+        <h3 style="color:green">Correct!...The correct answer is {{ answer }}</h3>
+    {% else %}
+        <h3 style="color:red">Wrong!...The correct answer is {{ correct_answer }}</h3>
     {% endif %}
-
 <h2>Your answer was {{ answer }}</h2>
 <br>
 <br>
+ <a href="http://localhost:8000/quiz/" target="_blank">Next Question</a>
 <br>
 <br>
 <br>
