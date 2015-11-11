@@ -72,15 +72,20 @@ a:active {
 <br>
 <center>
 {{ context }}
-
+{{ correct_answer|stringformat:"s" }}
+{{ answer|stringformat:"s" }}
+{{ answer.0 }}
+{{ correct_answer.1 }}
+<h2>This is the {{ correct_answer }} ...... {{ right_answer }}</h2>
+{% if correct_answer == answer %}
+    <h2>True</h2>
+{% endif %}
 <br>
 <br>
 <br>
-{% for answer_text in question.answer_set.all %}
-    {% if answer_text == answer %}
+    {% if correct_answer == answer %}
         <h3 style="color:green">Correct!...The correct answer is {{ answer }}.... ...{{ answer }}</h3>
     {% endif %}
-{% endfor %}
 
 <h2>Your answer was {{ answer }}</h2>
 <br>
