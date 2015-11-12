@@ -66,26 +66,20 @@ a:active {
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
 <center>
-{% if correct_answer == answer %}
-    <h2>I Love Ipython Notebook! :>)</h2>
-{% endif %}
-<br>
 <br>
 <br>
     {% if correct_answer == answer %}
-        <h3 style="color:green">Correct!...The correct answer is {{ answer }}</h3>
+        <h3 style="color:black">Correct!...The correct answer is</h3><h3 style="color:green">{{ answer }}</h3>
     {% else %}
-        <h3 style="color:red">Wrong!...The correct answer is {{ correct_answer }}</h3>
+        <h3 style="color:red">Wrong!</h3><br>
+        <h3 style="color:black">The correct answer is</h3><h3 style="color:green"> {{ correct_answer }}</h3><br>
+        <h3 style="color:black"> Your answer was {{ answer }}</h3>
     {% endif %}
-<h2>Your answer was {{ answer }}</h2>
+<h3>
 <br>
 <br>
- <a href="http://localhost:8000/quiz/" target="_blank">Next Question</a>
+ <a href="http://localhost:8000/quiz/" target="_blank">Next Set Of Questions</a>
 <br>
 <br>
 <br>
