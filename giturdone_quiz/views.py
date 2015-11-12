@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from . models import Answer, Question
 import random
 import datetime
+from django.utils.encoding import *
 
 # Create your views here.
 
@@ -41,7 +42,7 @@ def git_quiz(request):
 
 
 def git_quiz(request):
-    latest_question_list = Question.objects.all()[:1]
+    latest_question_list = Question.objects.all()[:9]
 #    latest_question_list = random.shuffle(temp_latest_question_list)
     context = {'latest_question_list': latest_question_list}
 #    questions = list(question_answer.keys())
@@ -97,12 +98,14 @@ def results(request, question_id):
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
         user_answer = request.POST.get('textfield', None)
-        str(user_answer)
+        # Get the question object
         q = Question.objects.get(pk=question_id)
+        # Get all the answers associated with the question object
         a = q.answer_set.all()
-        correct_answer = a[1]
-        str(correct_answer)
-        # correct_answer = answer.correct_answer
+        # Get the first element in the list of answers
+        value = a[0]
+        # smart_text is a django utility that converts an object to a unicode string
+        correct_answer = smart_text(value)
         context = {'latest_question_list': latest_question_list, 'answer': user_answer, 'question': question, 'correct_answer': correct_answer}
         value = "gil"
     return render(request, 'giturdone_quiz/results.html', context)
