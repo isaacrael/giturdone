@@ -43,7 +43,7 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Answer)
 
 
-#admin.site.register(Question, Answer, QuestionAdmin)
+#admin.site.register(Question)
 
 
 
