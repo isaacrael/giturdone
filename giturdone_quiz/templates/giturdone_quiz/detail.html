@@ -68,22 +68,15 @@ a:active {
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 <center>
-<br>
-<br>
-<br>
-<br>
 <h2>{{ question.question_text }}</h2>
-
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form action="{% url 'giturdone_quiz:results' question.id %}" method="post">
 {% csrf_token %}
-{% for answer in question.answer_set.all %}
-    {% if answer = answer.correct_answer %}
-    <h3>Correct!</h3>
-    {% endif %}
-<!--    <h3>The answer is {{ answer.answer_text }} the question is {{ question.question_text }}</h3>-->
-{% endfor %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Type Your Answer:</label>
 <input class="textinput textInput form-control" id="id_name" maxlength="100" name="textfield" type="text" /></p>
