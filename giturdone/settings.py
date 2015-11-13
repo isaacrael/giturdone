@@ -54,18 +54,12 @@ MIDDLEWARE_CLASSES = (
 
 
 # Include the context processor function 'get_current_time'
-# from hello.py within the app package.
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'giturdon_quiz.views.get_current_time',
-)
-
-
-
-
-
-
-
-
+# from views.py within the app package.  Note: get_currrent_time
+# is not being used in this version but is commented out here
+# for reference in future versions.
+#TEMPLATE_CONTEXT_PROCESSORS = (
+#    'giturdon_quiz.views.get_current_time',
+#)
 
 
 
@@ -135,10 +129,5 @@ EMAIL_HOST_PASSWORD = 'cjgtsm79!'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "gilrael79@gmail.com"
-
-
-
-
-
 
 
