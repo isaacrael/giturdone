@@ -5,6 +5,8 @@ from . models import Answer, Question
 # Register your models here.
 
 """
+# Note the code below is used as example code for use in changing the display in the admin
+
 class QuestionAdmin(admin.ModelAdmin):
     fields = ['pub_date', 'question_text']
 
@@ -14,6 +16,7 @@ class ChoiceInLine(admin.StackedInline):
 """
 
 """
+# Note the code below is used as example code for use in changing the display in the admin
 
 class ChoiceInLine(admin.TabularInline):
     model = Answer
@@ -22,6 +25,7 @@ class ChoiceInLine(admin.TabularInline):
 
 
 """
+# Note the code below is used as example code for use in changing the display in the admin
 
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -40,10 +44,14 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 
+# Note: the two lines below register the Answer and Question classes
+# so that Question & Answers are visible together in the admin site
+# making Question & Answer input and deletion very fast
+
 admin.site.register(Answer)
 
 
-#admin.site.register(Question)
+admin.site.register(Question)
 
 
 
