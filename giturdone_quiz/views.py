@@ -12,9 +12,13 @@ from django.utils.encoding import *
 
 # Create your views here.
 
+
+
 # This context processor function takes the request
 # object and returns a dictionary of context variables
-# to be made available to all templates.
+# to be made available to all templates.  Note: this
+# context processor is not being used in this app but is
+# included as an example for future versions
 
 def get_current_time(request):
   # Create a 'context' dictionary,
@@ -25,45 +29,31 @@ def get_current_time(request):
   return context
 
 
+# Note the index page used in the index function below tells the computer
+# user about the application and what it is meant to be used for
 
 def index(request):
     return render(request, 'index.html')
 
-"""
-def git_quiz(request):
-    questions = list(Question.objects.all())
-    question = random.shuffle(questions)
-#    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'questions': questions}
-#    questions = list(question_answer.keys())
-#    question = random.choice(questions)
-    return render(request, 'giturdone_quiz/index.html', context)
-"""
-
 
 def git_quiz(request):
-    latest_question_list = Question.objects.all()[:9]
-#    latest_question_list = random.shuffle(temp_latest_question_list)
+    latest_question_list = Question.objects.order_by('?')
     context = {'latest_question_list': latest_question_list}
-#    questions = list(question_answer.keys())
-#    question = random.choice(questions)
     return render(request, 'giturdone_quiz/index.html', context)
-
-
-
 
 
 def git_resources(request):
         return render(request, 'giturdone_quiz/resources.html')
 
-
-
-
-
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/detail.html', {'question': question})
 
+"""
+# Note: The answer function below is not being used but is left here
+# as an example for future versions of the application and may be able
+# to be used to implement a way to show a computer users test score based
+# on the number of questions answered correctly vs. total questions responded to
 
 def answer(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
@@ -83,18 +73,10 @@ def answer(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('giturdone_quiz:results', args=(p.id,)))
 
-
-
 """
-def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'giturdone_quiz/results.html', {'question': question})
-"""
-
 
 def results(request, question_id):
     latest_question_list = Question.objects.order_by('?')[:2]
-
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
         user_answer = request.POST.get('textfield', None)
@@ -110,12 +92,4 @@ def results(request, question_id):
         value = "gil"
     return render(request, 'giturdone_quiz/results.html', context)
 
-
-"""
-def results(request):
-    if request.method == 'POST':
-        user_answer = request.POST.get('textfield', None)
-        value = "gil"
-    return render(request, 'giturdone_quiz/results.html', {'answer': user_answer})
-"""
 
