@@ -38,6 +38,8 @@ def index(request):
 
 def git_quiz(request):
     latest_question_list = Question.objects.order_by('?')
+#    value = latest_question_list[0]
+#    q = smart_text(value)
     context = {'latest_question_list': latest_question_list}
     return render(request, 'giturdone_quiz/index.html', context)
 
@@ -76,7 +78,7 @@ def answer(request, question_id):
 """
 
 def results(request, question_id):
-    latest_question_list = Question.objects.order_by('?')[:2]
+    latest_question_list = Question.objects.order_by('?')
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
         user_answer = request.POST.get('textfield', None)
