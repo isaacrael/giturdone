@@ -5,6 +5,9 @@
     <title>Git Quiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
 <style>
 a:link {
     color: black;
@@ -30,7 +33,7 @@ a:active {
 
 </head>
 <body>
-<div class="w3-container w3-red">
+<div class="w3-container" style="background-color: red;">
 {% if request.user.is_authenticated %}
   <h1>Welcome {% if request.user.first_name %}
       {{ request.user.first.name }}
@@ -120,16 +123,30 @@ Click On A Question Below
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </center>
 </p>
 </div>
-<div class="w3-container w3-blue">
+<!--<div class="w3-container w3-blue">
   <h5>
 
   </h5>
   <p><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
 Software Developed By A Nerd For Nerds</center></p>
+</div>-->
+<div class="navbar navbar-default navbar-fixed-bottom" style="background-color: red;">
+    <div class="container">
+        <p class="navbar text"><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
+Software Developed By A Nerd For Nerds</center></p>
+    </div>
 </div>
+
 </head>
 </body>
 </html>
