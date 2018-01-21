@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Git Ur Done Quiz</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="/static/css/style.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <h1><span>Git Ur Done</span></h1>
+  </div>
+  <div id="nav">
+      {% if request.user.is_authenticated %}
+    <ul>
+      <li class="first"><a href="http://localhost:8000/"><em>A</em>BOUT</a></li>
+      <li><a href="http://localhost:8000/quiz_selection/"><em>S</em>ENSEI <em>Q</em>UIZ <em>S</em>ELECTION</a></li>
+      <li><a href="http://localhost:8000/quiz/"><em>S</em>ENSEI <em>Q</em>UIZ</a></li>
+      <li><a href="http://localhost:8000/resources/"><em>R</em>ESOURCES</em></a></li>
+      <li><a href="http://localhost:8000/account/logout/"><em>L</em>OGOUT</a></li>
+       {% else %}
+      <li class="first"><a href="http://localhost:8000/"><em>A</em>BOUT</a></li>
+      <li><a href="http://localhost:8000/account/register/"><em>R</em>EGISTER</a></li>
+      <li><a href="http://localhost:8000/account/login/"><em>L</em>OGIN</a></li>
+       {% endif %}
+
+    </ul>
+  </div>
+  <div id="body">
+    <div id="content">
+      <div class="i">
+          {% if request.user.is_authenticated %}
+        <h2><strong>Welcome {% if request.user.first_name %}</strong> To Git Ur Done</h2>
+                {{ request.user.first.name }}
+                {% else %}
+                {{ request.user.username }}
+                {% endif %}
+          {% else %}
+          <h2><strong>Welcome </strong> To Git Ur Done</h2>
+          {% endif %}
+
+
+<p><center><h2>Please, type in the number that corresponds to the quiz that you would like to take then click submit
+and click on the Sensei Quiz menu option to take your quiz.
+</h2></center></p>
+<ul>
+<li>[1] Git Basics</li>
+<li>[2] Undoing Changes</li>
+<li>[3] Rewriting Git History</li>
+<li>[4] Git Branches</li>
+<li>[5] Remote Repositories</li>
+<li>[6] Git Config</li>
+<li>[7] Git Log</li>
+<li>[8] Git Diff</li>
+<li>[9] Git Reset</li>
+<li>[10] Git Rebase</li>
+<li>[11] Git Pull</li>
+<li>[12] Git Push</li>
+</ul>
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form method="POST" action="/quiz_selection/">
+{% csrf_token %}
+  <table>{{ form.as_table }}</table>
+   <p><label for="id_name"> Type Your Answer:</label>
+<input class="textinput textInput form-control" id="id_name" maxlength="100" name="textfield" type="text" /></p>
+  <input type="submit" value="Submit" />
+</form>
+        </div>
+      </div>
+    </div>
+    <div id="copyright"> &copy; Copyright 2016 | Web Design & Software Application Development By <a target=_blank href="http://www.gilrael.com">Gil Rael</a></div>
+  </div>
+  <div id="footer"> </div>
+</div>
+</body>
+</html>
