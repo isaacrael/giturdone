@@ -9,6 +9,7 @@ urlpatterns = [
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^quiz/', include('giturdone_quiz.urls', namespace="giturdone_quiz")),
+    url(r'^quiz_selection/', 'giturdone_quiz.views.quiz_selection', name='quiz_selection'),
     url(r'^$', 'giturdone_quiz.views.index', name='index'),
     url(r'^results/', 'giturdone_quiz.views.results', name='results'),
 # Left line below in prod version for now just in case it is needed
