@@ -63,13 +63,13 @@ def git_quiz(request):
     if user_response == '1':
         latest_question_list = Question.objects.filter(category="Git Basics")
     if user_response == '2':
-        latest_question_list = Question.objects.filter(category="Undoing Changes")
+        latest_question_list = Question.objects.filter(category="Git Undoing Changes")
     if user_response == '3':
-        latest_question_list = Question.objects.filter(category="Rewriting Git History")
+        latest_question_list = Question.objects.filter(category="Git Rewriting Git History")
     if user_response == '4':
         latest_question_list = Question.objects.filter(category="Git Branches")
     if user_response == '5':
-        latest_question_list = Question.objects.filter(category="Remote Repositories")
+        latest_question_list = Question.objects.filter(category="Git Remote Repositories")
     if user_response == '6':
         latest_question_list = Question.objects.filter(category="Git Config")
     if user_response == '7':
