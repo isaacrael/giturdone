@@ -9,6 +9,13 @@ from . models import Answer, Question
 import random
 import datetime
 from django.utils.encoding import *
+# The line below imports the user_response variable from the user_response.py file
+from . user_response import user_response
+
+
+
+
+
 
 # Create your views here.
 
@@ -35,12 +42,49 @@ def get_current_time(request):
 def index(request):
     return render(request, 'index.html')
 
+# quiz_selection page takes a user_response as input and displays associated quiz on Sensei Quiz page
+
+def quiz_selection(request):
+    if request.method == 'POST':
+        user_response = request.POST.get('textfield', None)
+        user_response = smart_text(user_response)
+        f = open('giturdone_quiz/user_response.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        f.write('user_response = ' + repr(str(user_response)))
+        f.close()
+    return render(request, 'giturdone_quiz/quiz_selection.html')
+
+
+# git_quiz displays the quiz selected by user in the Sensei Quiz Selection page
 
 def git_quiz(request):
-    latest_question_list = Question.objects.order_by('?')
-#    value = latest_question_list[0]
-#    q = smart_text(value)
-    context = {'latest_question_list': latest_question_list}
+    if user_response == 'None':
+        return render(request, 'giturdone_quiz/index.html')
+    if user_response == '1':
+        latest_question_list = Question.objects.filter(category="Git Basics")
+    if user_response == '2':
+        latest_question_list = Question.objects.filter(category="Undoing Changes")
+    if user_response == '3':
+        latest_question_list = Question.objects.filter(category="Rewriting Git History")
+    if user_response == '4':
+        latest_question_list = Question.objects.filter(category="Git Branches")
+    if user_response == '5':
+        latest_question_list = Question.objects.filter(category="Remote Repositories")
+    if user_response == '6':
+        latest_question_list = Question.objects.filter(category="Git Config")
+    if user_response == '7':
+        latest_question_list = Question.objects.filter(category="Git Log")
+    if user_response == '8':
+        latest_question_list = Question.objects.filter(category="Git Diff")
+    if user_response == '9':
+        latest_question_list = Question.objects.filter(category="Git Reset")
+    if user_response == '10':
+        latest_question_list = Question.objects.filter(category="Git Rebase")
+    if user_response == '11':
+        latest_question_list = Question.objects.filter(category="Git Pull")
+    if user_response == '12':
+        latest_question_list = Question.objects.filter(category="Git Push")
+    context = {'user_response': user_response, 'latest_question_list': latest_question_list}
     return render(request, 'giturdone_quiz/index.html', context)
 
 
@@ -93,5 +137,6 @@ def results(request, question_id):
         context = {'latest_question_list': latest_question_list, 'answer': user_answer, 'question': question, 'correct_answer': correct_answer}
         value = "gil"
     return render(request, 'giturdone_quiz/results.html', context)
+
 
 
