@@ -8,6 +8,7 @@ from django.utils import timezone
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+    category = models.CharField(max_length=30)
 
     def __unicode__(self):
         return self.question_text
