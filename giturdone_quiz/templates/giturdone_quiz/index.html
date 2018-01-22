@@ -55,11 +55,11 @@ a:active {
 <br>
 {% if request.user.is_authenticated %}
 <h3>
-<a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/quiz/" target="_blank">Quiz</a>  <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources</a>  <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
+    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/" target="_blank">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/quiz/" target="_blank">Quiz |</a> <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
 </h3>
 {% else %}
 <h3>
-<a href="http://localhost:8000/" target="_blank">About</a>   <a href="http://localhost:8000/account/register" target="_blank">Register</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>
+<a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/account/register" target="_blank">Register |</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>
 </h3>
 {% endif %}
 <br>
@@ -69,7 +69,7 @@ a:active {
 <br>
 <br>
 <br>
-<center>
+<h3>
 Click On A Question Below
 <br>
 <br>
@@ -84,7 +84,7 @@ Click On A Question Below
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
-
+</h3>
 <br>
 <br>
 <br>
@@ -130,7 +130,6 @@ Click On A Question Below
 <br>
 <br>
 <br>
-</center>
 </p>
 </div>
 <!--<div class="w3-container w3-blue">
