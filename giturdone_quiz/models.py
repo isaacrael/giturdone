@@ -25,6 +25,7 @@ class Answer(models.Model):
     answer_text = models.CharField(max_length=200)
     answers = models.IntegerField(default=0)
     correct_answer = models.CharField(max_length=200, default='Linus Torvalds')
+#    image = models.ImageField(width_field=250, height_field=250, default='None')
 
 
     def __unicode__(self):
