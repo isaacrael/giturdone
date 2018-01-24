@@ -69,11 +69,14 @@ a:active {
 <br>
 <br>
 <br>
-<br>
-<br>
+    <h3 align="left" style="color:Blue;">Score: {{ COUNT }} %</h3>
+    <h3 align="left" style="color:Blue;">Total Questions Answered: {{ COUNT }}</h3>
+    <h3 align="left" style="color:Blue;">Correct Answers: {{ COUNT }}</h3>
+    <h3 align="left" style="color:Blue;">Wrong Answers: {{ COUNT }}</h3>
 <center>
+<br>
     {% if correct_answer == answer %}
-        <h3 style="color:black">Correct!...The correct answer is</h3><h3 style="color:green">{{ answer }}</h3>
+        <h3 style="color:black">Correct!...The correct answer is</h3><h3 style="color:green">{{ answer }} {{ quiz_counter }} </h3>
     {% else %}
         <h3 style="color:red">Wrong!</h3><br>
         <h3 style="color:black">The correct answer is</h3><h3 style="color:green"> {{ correct_answer }}</h3><br>
