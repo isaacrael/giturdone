@@ -11,7 +11,7 @@ import datetime
 from django.utils.encoding import *
 # The line below imports the user_response variable from the user_response.py file
 from . user_response import user_response
-
+from processors import custom_processor
 
 
 
@@ -26,14 +26,6 @@ from . user_response import user_response
 # to be made available to all templates.  Note: this
 # context processor is not being used in this app but is
 # included as an example for future versions
-
-def get_current_time(request):
-  # Create a 'context' dictionary,
-  # populate it with the current time
-  # and return it
-  context = {}
-  context['current_time'] = datetime.datetime.now()
-  return context
 
 
 # Note the index page used in the index function below tells the computer
