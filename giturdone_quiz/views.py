@@ -126,7 +126,19 @@ def results(request, question_id):
         value = a[0]
         # smart_text is a django utility that converts an object to a unicode string
         correct_answer = smart_text(value)
-        context = {'latest_question_list': latest_question_list, 'answer': user_answer, 'question': question, 'correct_answer': correct_answer}
+        number_of_correct_answers = []
+        number_of_wrong_answers = []
+        total_correct_answers=0
+        total_wrong_answers=0
+        total_questions_answered=0
+        if correct_answer == user_answer:
+            number_of_correct_answers.append("1")
+            total_correct_answers = len(number_of_correct_answers)
+        else:
+            number_of_wrong_answers.append("1")
+            total_wrong_answers = len(number_of_wrong_answers)
+        total_questions_answered=total_correct_answers + total_wrong_answers
+        context = {'latest_question_list': latest_question_list, 'answer': user_answer, 'question': question, 'correct_answer': correct_answer, 'right_answers': total_correct_answers, 'wrong_answers': total_wrong_answers, 'total_answers': total_questions_answered}
         value = "gil"
     return render(request, 'giturdone_quiz/results.html', context)
 
