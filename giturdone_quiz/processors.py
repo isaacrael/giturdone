@@ -2,7 +2,7 @@ import datetime
 
 # imports results from views in an attempt to create score calculator
 
-from views import results
+#from views import results
 
 # This context processor function takes the request
 # object and returns a dictionary of context variables
