@@ -21,13 +21,6 @@ from processors import custom_processor
 
 
 
-# This context processor function takes the request
-# object and returns a dictionary of context variables
-# to be made available to all templates.  Note: this
-# context processor is not being used in this app but is
-# included as an example for future versions
-
-
 # Note the index page used in the index function below tells the computer
 # user about the application and what it is meant to be used for
 
