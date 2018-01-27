@@ -120,6 +120,9 @@ def results(request, question_id):
         # smart_text is a django utility that converts an object to a unicode string
         correct_answer = smart_text(value)
         # code for score calculator
+        total_number_correct_answers=0
+        total_number_wrong_answers=0
+        total_questions_answered=0
         if correct_answer == user_answer:
             total_number_correct_answers = 1
         else:
