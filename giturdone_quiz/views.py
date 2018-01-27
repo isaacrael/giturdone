@@ -120,21 +120,14 @@ def results(request, question_id):
         # smart_text is a django utility that converts an object to a unicode string
         correct_answer = smart_text(value)
         # code for score calculator
-        number_of_correct_answers = []
-        number_of_wrong_answers = []
-        total_correct_answers=0
-        total_wrong_answers=0
-        total_questions_answered=0
         if correct_answer == user_answer:
-            number_of_correct_answers.append("1")
-            total_correct_answers = len(number_of_correct_answers)
+            total_number_correct_answers = 1
         else:
-            number_of_wrong_answers.append("1")
-            total_wrong_answers = len(number_of_wrong_answers)
-        total_questions_answered=total_correct_answers + total_wrong_answers
+            total_number_wrong_answers = 1
+        total_questions_answered = total_number_correct_answers + total_number_wrong_answers
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
-        'question': question, 'correct_answer': correct_answer, 'right_answers': total_correct_answers,
-        'wrong_answers': total_wrong_answers, 'total_answers': total_questions_answered}
+        'question': question, 'correct_answer': correct_answer, 'total_number_correct_answers': total_number_correct_answers,
+        'total_number_wrong_answers': total_number_wrong_answers, 'total_questions_answered': total_questions_answered}
     return render(request, 'giturdone_quiz/results.html', context)
 
 
