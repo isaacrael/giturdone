@@ -10,7 +10,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
 
 <!-- TODO add mark up to display button to allow computer user to zero out score vars -->
-<!-- TODO replace Correct! and Wrong! with icon possibly thumbs up and thumbs down -->
+<!-- TODO replace Correct! and Wrong! with icon possibly thumbs up and thumbs down future versions may include random displaying of icons-->
+<!-- TODO future versions could display java script or CSS animations -->
+<!-- TODO draw a red box around existing text in score calculator info -->
+<!-- TODO add a Feynman Technique Quiz possibly incorporating SRS functionality-->
+<!-- TODO add images to go along with answers to incorporate visual senses while learning -->
+
+
+
 
 
 
@@ -35,6 +42,13 @@ a:active {
     background-color: transparent;
     text-decoration: underline;
 }
+
+
+.rectangle {
+    width: 400px;
+    height: 200px;
+    background: red;
+}
 </style>
 
 </head>
@@ -46,11 +60,11 @@ a:active {
       {% else %}
       {{ request.user.username }}
       {% endif %}
-      - To Git Ur Done<br>
+      - Git Ur Done<br>
       <img src="/static/images/git.png" style="width:50px;height:50px;"> <font size="1">{{ DATE_TIME }}</font>
   </h1>
 {% else %}
-<h1> Welcome To Git Ur Done</h1> <img src="/static/images/git.png" style="width:50px;height:50px;">
+<h1> Welcome Git Ur Done</h1> <img src="/static/images/git.png" style="width:50px;height:50px;">
 {% endif %}
 </div>
 
@@ -75,11 +89,15 @@ a:active {
 <br>
 <br>
 <br>
+<!--    <div class="rectangle"></div>-->
+
+
     <h3 align="left" style="color:Blue;">Grade: {{ Grade }}</h3>
     <h3 align="left" style="color:Blue;">Score: {{ score }} %</h3>
     <h3 align="left" style="color:Blue;">Total Questions Answered: {{ total_questions_answered }}</h3>
     <h3 align="left" style="color:Blue;">Correct Answers: {{ total_correct_answers }}</h3>
     <h3 align="left" style="color:Blue;">Wrong Answers: {{ total_wrong_answers }}</h3>
+
 <center>
 <br>
     {% if correct_answer == answer %}
