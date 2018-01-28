@@ -28,6 +28,7 @@ class Answer(models.Model):
     total_number_correct_answers = models.IntegerField(default=0)
     total_number_wrong_answers = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
+
     def __unicode__(self):
         return self.answer_text
 
