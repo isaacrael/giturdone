@@ -110,6 +110,7 @@ def results(request, question_id):
     latest_question_list = Question.objects.order_by('?')
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
+        selected_answer = Answer.objects.get(pk=question_id)
         user_answer = request.POST.get('textfield', None)
         # Get the question object
         q = Question.objects.get(pk=question_id)
@@ -120,17 +121,19 @@ def results(request, question_id):
         # smart_text is a django utility that converts an object to a unicode string
         correct_answer = smart_text(value)
         # code for score calculator
-        total_number_correct_answers=0
-        total_number_wrong_answers=0
-        total_questions_answered=0
+        #total_number_correct_answers=0
+        #total_number_wrong_answers=0
+        #total_questions_answered=0
         if correct_answer == user_answer:
-            total_number_correct_answers = 1
+            selected_answer.answers += 1
+            selected_answer.save()
         else:
-            total_number_wrong_answers = 1
-        total_questions_answered = total_number_correct_answers + total_number_wrong_answers
+            selected_answer.total_number_wrong_answers += 1
+            selected_answer.save()
+        selected_answer.total_questions_answered = selected_answer.total_number_correct_answers + selected_answer.total_number_wrong_answers
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
-        'question': question, 'correct_answer': correct_answer, 'total_number_correct_answers': total_number_correct_answers,
-        'total_number_wrong_answers': total_number_wrong_answers, 'total_questions_answered': total_questions_answered}
+        'question': question, 'correct_answer': correct_answer, 'total_number_correct_answers': selected_answer.total_number_correct_answers,
+        'total_number_wrong_answers': selected_answer.total_number_wrong_answers, 'total_questions_answered': selected_answer.total_questions_answered}
     return render(request, 'giturdone_quiz/results.html', context)
 
 
