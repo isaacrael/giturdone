@@ -15,6 +15,3 @@ def custom_processor(request):
     return {'DATE_TIME':now}
 
 
-#def score_calculator(request):
-#    return {}
-# testing to see if merge works from score calculator branch
