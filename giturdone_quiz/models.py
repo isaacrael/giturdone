@@ -25,9 +25,6 @@ class Answer(models.Model):
     answer_text = models.CharField(max_length=200)
     answers = models.IntegerField(default=0)
     correct_answer = models.CharField(max_length=200, default='Linus Torvalds')
-    total_number_correct_answers = models.IntegerField(default=0)
-    total_number_wrong_answers = models.IntegerField(default=0)
-    score = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.answer_text
