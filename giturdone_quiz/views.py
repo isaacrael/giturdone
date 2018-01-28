@@ -42,7 +42,7 @@ def quiz_selection(request):
     return render(request, 'giturdone_quiz/quiz_selection.html')
 
 
-# git_quiz displays the quiz selected by user in the Sensei Quiz Selection page
+# git_quiz displays the quiz selected by user in the Quiz Selection page
 
 def git_quiz(request):
     if user_response == 'None':
@@ -82,31 +82,6 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'giturdone_quiz/detail.html', {'question': question})
 
-"""
-# Note: The answer function below is not being used but is left here
-# as an example for future versions of the application and may be able
-# to be used to implement a way to show a computer users test score based
-# on the number of questions answered correctly vs. total questions responded to
-
-def answer(request, question_id):
-    p = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = p.answer_set.get(pk=request.POST['answer'])
-    except (KeyError, Answer.DoesNotExist):
-        # Redisplay the question answer form.
-        return render(request, 'giturdone_quiz/detail.html', {
-            'question': p,
-            'error_message': "You didn't select an answer.",
-        })
-    else:
-        selected_choice.answers += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('giturdone_quiz:results', args=(p.id,)))
-
-"""
 
 def results(request, question_id):
     latest_question_list = Question.objects.order_by('?')
@@ -123,6 +98,7 @@ def results(request, question_id):
         # smart_text is a django utility that converts an object to a unicode string
         correct_answer = smart_text(value)
         # code for score calculator
+        # initialize variables
         sum = 0
         total_correct_answers=0
         ttl_correct = 0
@@ -133,18 +109,27 @@ def results(request, question_id):
         ttl_questions_answered = 0
         score = 0
         Grade = str("")
+        # if correct answer increment total_correct_answers by 1 for the selected answer
         if correct_answer == user_answer:
             selected_answer.total_correct_answers += 1
             selected_answer.save()
         else:
+        # if wrong answer increment total_wrong_answers by for the selected answer
             selected_answer.total_wrong_answers += 1
             selected_answer.save()
+        # add up all the total_correct_answers -> produces a dictionary
         ttl_correct = Answer.objects.aggregate(Sum('total_correct_answers'))
+        # assign the dictionary value to ttl_c
         ttl_c = (ttl_correct["total_correct_answers__sum"])
+        # add up all the total_wrong_answers -> produces a dictionary
         ttl_wrong = Answer.objects.aggregate(Sum('total_wrong_answers'))
+        # assign the dictionary value to ttl_w
         ttl_w = (ttl_wrong["total_wrong_answers__sum"])
+        # calculate total questions answered
         ttl_questions_answered = ttl_c + ttl_w
+        # calculate quiz score
         score = (float(ttl_c)/float(ttl_questions_answered) * 100)
+        # make score and integer so that if elif statements below handle the score value correctly
         score = round(int(score), 2)
         if score in range(90,100):
             Grade = "A"
@@ -159,6 +144,4 @@ def results(request, question_id):
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
         'question': question, 'correct_answer': correct_answer, 'Grade':Grade, 'score':score, 'total_questions_answered': ttl_questions_answered, 'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w}
     return render(request, 'giturdone_quiz/results.html', context)
-
-
 
