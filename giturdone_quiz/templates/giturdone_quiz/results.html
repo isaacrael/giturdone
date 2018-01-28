@@ -69,10 +69,11 @@ a:active {
 <br>
 <br>
 <br>
-    <h3 align="left" style="color:Blue;">Score:  %</h3>
-    <h3 align="left" style="color:Blue;">Total Questions Answered: </h3>
-    <h3 align="left" style="color:Blue;">Correct Answers: </h3>
-    <h3 align="left" style="color:Blue;">Wrong Answers: </h3>
+    <h3 align="left" style="color:Blue;">Grade: {{ Grade }}</h3>
+    <h3 align="left" style="color:Blue;">Score: {{ score }} %</h3>
+    <h3 align="left" style="color:Blue;">Total Questions Answered: {{ total_questions_answered }}</h3>
+    <h3 align="left" style="color:Blue;">Correct Answers: {{ total_correct_answers }}</h3>
+    <h3 align="left" style="color:Blue;">Wrong Answers: {{ total_wrong_answers }}</h3>
 <center>
 <br>
     {% if correct_answer == answer %}
