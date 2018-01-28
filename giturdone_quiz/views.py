@@ -15,7 +15,8 @@ from processors import custom_processor
 from django.db.models import Sum
 
 # TODO add comments to this module
-
+# TODO add a button that allows computer user to zero out their scores
+# TODO add functionality that zeros out scores on logout
 
 
 # Create your views here.
@@ -131,7 +132,7 @@ def results(request, question_id):
         ttl_w = 0
         ttl_questions_answered = 0
         score = 0
-        Grade = str("text")
+        Grade = str("")
         if correct_answer == user_answer:
             selected_answer.total_correct_answers += 1
             selected_answer.save()
@@ -144,7 +145,7 @@ def results(request, question_id):
         ttl_w = (ttl_wrong["total_wrong_answers__sum"])
         ttl_questions_answered = ttl_c + ttl_w
         score = (float(ttl_c)/float(ttl_questions_answered) * 100)
-        score = round(score, 2)
+        score = round(int(score), 2)
         if score in range(90,100):
             Grade = "A"
         elif score in range(80,90):
@@ -155,8 +156,6 @@ def results(request, question_id):
             Grade = "D"
         elif score in range(50,60):
             Grade = "F"
-
-
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
         'question': question, 'correct_answer': correct_answer, 'Grade':Grade, 'score':score, 'total_questions_answered': ttl_questions_answered, 'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w}
     return render(request, 'giturdone_quiz/results.html', context)
