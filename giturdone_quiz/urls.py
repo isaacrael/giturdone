@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
     # ex: /quiz/5/results/
     url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
+    url(r'^reset_scores/', views.reset_scores, name='reset_scores'),
     # ex: /quiz/5/vote/
 # Note: the answers url is not being used in the app but is left here
 # as an example for future versions
