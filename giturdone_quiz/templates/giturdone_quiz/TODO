@@ -3,9 +3,10 @@
 # TODO research how packaging is done in Python for web apps and desktop apps
 # TODO change footer color on resources page to be red
 # TODO Reset Scores To Zero
-#   Create Form Reset Scores To Zero Button in results.html that calls reset_scores.html
-#   Create new html file called reset_scores.html
-#   Copy results.html to the reset_scores.html file & edit to display Your Scores Have Been Zeroed!
-#   Create a new function in views.py called reset_scores
-#   Research zeroing out a table column in Python Django
-#   Write def reset_scores():
+#   Done Create Form Reset Scores To Zero Button in results.html that calls reset_scores.html
+#   Done Create new html file called reset_scores.html
+#   Done Copy results.html to the reset_scores.html file & edit to display Your Scores Have Been Zeroed!
+#   Done Create a new function in views.py called reset_scores
+#   Done Research zeroing out a table column in Python Django
+#   Done Create reset_scores url in urls.py
+#   Done Write def reset_scores():
