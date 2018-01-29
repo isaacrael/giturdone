@@ -131,7 +131,7 @@ def results(request, question_id):
         score = (float(ttl_c)/float(ttl_questions_answered) * 100)
         # make score and integer so that if elif statements below handle the score value correctly
         score = round(int(score), 2)
-        if score in range(90,100):
+        if score in range(90,101):
             Grade = "A"
         elif score in range(80,90):
             Grade = "B"
@@ -139,9 +139,18 @@ def results(request, question_id):
             Grade = "C"
         elif score in range(60,70):
             Grade = "D"
-        elif score in range(50,60):
+        elif score in range(0,59):
             Grade = "F"
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
         'question': question, 'correct_answer': correct_answer, 'Grade':Grade, 'score':score, 'total_questions_answered': ttl_questions_answered, 'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w}
     return render(request, 'giturdone_quiz/results.html', context)
 
+
+def reset_scores(request):
+    answer_item = 0
+    answers = Answer.objects.all()
+    for answer_item in answers:
+        answer_item.total_correct_answers = 0
+        answer_item.total_wrong_answers = 0
+        answer_item.save()
+    return render(request, 'giturdone_quiz/reset_scores.html')
