@@ -98,7 +98,21 @@ a:active {
     <h3 align="left" style="color:Blue;">Correct Answers: {{ total_correct_answers }}</h3>
     <h3 align="left" style="color:Blue;">Wrong Answers: {{ total_wrong_answers }}</h3>
 
+
+ <form action="{% url 'giturdone_quiz:reset_scores' %}" method="post">
+{% csrf_token %}
+  <table>{{ form.as_table }}</table>
+<!--   <p><label for="id_name"> Click Button To Reset Your Scores To Zero:</label>
+<input align="left" class="textinput textInput form-control size=50" id="id_name" maxlength="50" name="textfield" type="text" style="width:400px"/></p>
+  <input type="submit" value="Reset Scores To Zero" /></p>-->
+<button type="submit" class="btn btn-danger btn-sm">Reset Scores To Zero</button>
+</form>
+
+
+
 <center>
+
+
 <br>
     {% if correct_answer == answer %}
         <h3 style="color:black">Correct!...The correct answer is</h3><h3 style="color:green">{{ answer }} {{ quiz_counter }} </h3>
