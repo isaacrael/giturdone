@@ -1,6 +1,6 @@
 # TODO - Git specific
     # TODO research how versioning is done in Git
-    # TODO research what tags are and how they are used
+    # In Progress - TODO research what tags are and how they are used
 
 # TODO research pycharm snippets feature and incorporate if useful
 # TODO research how versioning is done in Git
@@ -48,3 +48,12 @@
     # TODO black hole identification, tool bootstrap icon
 # TODO create a Help menu that provides information about each quiz and any
     # TODO instructions computer user may find helpful
+
+# TODO create Features/Cosmetic_Changes
+    # TODO change footer color to red in reset_scores.html
+    # TODO double check that only blue text exists on pages
+
+
+# TODO create Features/Help_Page
+
+
