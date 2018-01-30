@@ -1,7 +1,7 @@
 # TODO research pycharm snippets feature and incorporate if useful
 # TODO research how versioning is done in Git
 # TODO research how packaging is done in Python for web apps and desktop apps
-# TODO change footer color on resources page to be red
+# Done TODO change footer color on all pages to red
 # TODO Reset Scores To Zero
     #   Done Create Form Reset Scores To Zero Button in results.html that calls reset_scores.html
     #   Done Create new html file called reset_scores.html
@@ -10,6 +10,9 @@
     #   Done Research zeroing out a table column in Python Django
     #   Done Create reset_scores url in urls.py
     #   Done Write def reset_scores():
+# Done TODO add questions and answers to db.sqlite3
+# Done TODO rename db.sqlite3 to giturdone.sqlite3
+# Done TODO edit settings.py to use giturdone.sqlite3
 # TODO create branch Features/Answer_Images
 # TODO create branch Features/Refactoring
 # TODO incorporate graphing into next version
@@ -17,6 +20,8 @@
     # TODO incorporate method that identifies black holes in your knowledge
     # TODO possibly using image of black hole with categories listed around
     # TODO image of black hole
+    # TODO locate and download blackhole image
+# Done TODO add thumbs up and thumbs down images for correct answers and wrong answers
 # TODO create a utilities menu in next version that includes reset scores button,
     # TODO black hole identification, tool bootstrap icon
 # TODO create a Help menu that provides information about each quiz and any
