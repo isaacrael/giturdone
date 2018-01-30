@@ -52,7 +52,7 @@ def git_quiz(request):
     if user_response == '2':
         latest_question_list = Question.objects.filter(category="Git Undoing Changes")
     if user_response == '3':
-        latest_question_list = Question.objects.filter(category="Git Rewriting Git History")
+        latest_question_list = Question.objects.filter(category="Git Rewriting History")
     if user_response == '4':
         latest_question_list = Question.objects.filter(category="Git Branches")
     if user_response == '5':
