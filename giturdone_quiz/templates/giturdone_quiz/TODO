@@ -34,9 +34,12 @@
     # TODO image of black hole
     # Done - TODO locate and download blackhole image
     # TODO create template for black hole image analyser
+    # TODO create FT_Questions Model based on Questions Model
+    # TODO create FT_Answers Model based on Answers Model
+    # TODO layout the design of Feynman Technique Quiz
 
 
-# Done TODO add thumbs up and thumbs down images for correct answers and wrong answers
+
 # TODO create a utilities menu in next version that includes reset scores button,
     # TODO black hole identification, tool bootstrap icon
 # TODO create a Help menu that provides information about each quiz and any
