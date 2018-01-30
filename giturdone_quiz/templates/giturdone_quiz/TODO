@@ -39,6 +39,7 @@
     # TODO create template for black hole image analyser
     # TODO create FT_Questions Model based on Questions Model
     # TODO create FT_Answers Model based on Answers Model
+    # TODO register FT_Questions & FT_Answers in admin.py
     # TODO layout the design of Feynman Technique Quiz
 
 
