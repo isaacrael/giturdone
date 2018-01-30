@@ -3,10 +3,21 @@
 # TODO research how packaging is done in Python for web apps and desktop apps
 # TODO change footer color on resources page to be red
 # TODO Reset Scores To Zero
-#   Done Create Form Reset Scores To Zero Button in results.html that calls reset_scores.html
-#   Done Create new html file called reset_scores.html
-#   Done Copy results.html to the reset_scores.html file & edit to display Your Scores Have Been Zeroed!
-#   Done Create a new function in views.py called reset_scores
-#   Done Research zeroing out a table column in Python Django
-#   Done Create reset_scores url in urls.py
-#   Done Write def reset_scores():
+    #   Done Create Form Reset Scores To Zero Button in results.html that calls reset_scores.html
+    #   Done Create new html file called reset_scores.html
+    #   Done Copy results.html to the reset_scores.html file & edit to display Your Scores Have Been Zeroed!
+    #   Done Create a new function in views.py called reset_scores
+    #   Done Research zeroing out a table column in Python Django
+    #   Done Create reset_scores url in urls.py
+    #   Done Write def reset_scores():
+# TODO create branch Features/Answer_Images
+# TODO create branch Features/Refactoring
+# TODO incorporate graphing into next version
+# TODO incorporate Feynman Technique into next version
+    # TODO incorporate method that identifies black holes in your knowledge
+    # TODO possibly using image of black hole with categories listed around
+    # TODO image of black hole
+# TODO create a utilities menu in next version that includes reset scores button,
+    # TODO black hole identification, tool bootstrap icon
+# TODO create a Help menu that provides information about each quiz and any
+    # TODO instructions computer user may find helpful
