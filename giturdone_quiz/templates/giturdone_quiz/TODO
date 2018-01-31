@@ -50,10 +50,9 @@
     # TODO instructions computer user may find helpful
 
 # TODO create Features/Cosmetic_Changes
-    # TODO change footer color to red in reset_scores.html
+    # Done - TODO change footer color to red in reset_scores.html
     # TODO double check that only blue text exists on pages
-
-
-# TODO create Features/Help_Page
+    # TODO create smaller jumbotron on the resources page
+    # TODO create Help Page
 
 
