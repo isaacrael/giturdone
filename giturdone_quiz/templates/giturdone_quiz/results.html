@@ -117,6 +117,7 @@ a:active {
     {% if correct_answer == answer %}
         <img src="/static/images/two_thumbs_up.png" style="width:125px;height:100px;">
         <h3 style="color:blue">The correct answer is</h3><h3 style="color:green">{{ answer }} {{ quiz_counter }} </h3>
+        <img src="{{ answer.image.url }}" style="width:50px;height:50px;">
     {% else %}
         <img src="/static/images/thumbs_down.png" style="width:125px;height:100px;">
         <h3 style="color:blue">The correct answer is</h3><h3 style="color:green"> {{ correct_answer }}</h3><br>
