@@ -27,6 +27,7 @@ class Answer(models.Model):
     correct_answer = models.CharField(max_length=200, default='Linus Torvalds')
     total_correct_answers = models.IntegerField(default=0)
     total_wrong_answers = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='post_image', blank=True)
 
     def __unicode__(self):
         return self.answer_text
