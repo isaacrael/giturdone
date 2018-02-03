@@ -88,6 +88,14 @@ def results(request, question_id):
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
         selected_answer = Answer.objects.get(pk=question_id)
+        # Gets my_answer -> the answer associated with question_id
+        my_answer = Answer.objects.filter(question_id=question_id)
+        # Get the image "post_image/filename" for my_answer
+        for item in my_answer:
+            image = item.image
+        image=str(item.image)
+        # Concatenates "/media/" + "post_image/filename"
+        image=("/media/" + (image))
         user_answer = request.POST.get('textfield', None)
         # Get the question object
         q = Question.objects.get(pk=question_id)
@@ -142,7 +150,9 @@ def results(request, question_id):
         elif score in range(0,59):
             Grade = "F"
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
-        'question': question, 'correct_answer': correct_answer, 'Grade':Grade, 'score':score, 'total_questions_answered': ttl_questions_answered, 'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w}
+        'question': question, 'correct_answer': correct_answer, 'Grade':Grade,
+        'score':score, 'total_questions_answered': ttl_questions_answered,
+        'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w, 'image': image}
     return render(request, 'giturdone_quiz/results.html', context)
 
 
