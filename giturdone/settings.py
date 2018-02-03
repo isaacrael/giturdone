@@ -115,6 +115,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'giturdone_quiz/media')
+
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 180
 REGISTRATION_AUTO_LOGIN = True
