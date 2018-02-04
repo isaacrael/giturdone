@@ -94,6 +94,7 @@ def results(request, question_id):
         for item in my_answer:
             image = item.image
         image=str(item.image)
+
         # Concatenates "/media/" + "post_image/filename"
         image=("/media/" + (image))
         user_answer = request.POST.get('textfield', None)
