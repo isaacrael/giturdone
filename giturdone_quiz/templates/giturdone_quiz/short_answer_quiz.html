@@ -90,7 +90,7 @@ a:active {
 </h3>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form method="POST" action="/quiz/">
+<form method="POST" action="/short_answer_quiz/">
 {% csrf_token %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Please, type in the number that corresponds to the quiz that you would like to take then click submit
