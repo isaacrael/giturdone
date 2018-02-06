@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     # ex: /quiz/
     url(r'^quiz_selection/', views.quiz_selection, name='quiz_selection'),
+    url(r'^short_answer_quiz/', views.git_quiz, name='short_answer_quiz'),
     url(r'^$', views.git_quiz, name='index'),
     url(r'^resources/', views.git_resources, name='resources'),
     # ex: /quiz/5/
