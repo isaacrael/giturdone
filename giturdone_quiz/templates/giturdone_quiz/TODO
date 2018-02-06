@@ -9,7 +9,19 @@
 # TODO - Python Specific
     # TODO research how packaging is done in Python for web apps and desktop apps
 
+# TODO - Page Redirect On Login to About Page
+    # TODO - Create Features/Redirect_To_About_Page
+    # TODO - verify that About page has logic to determine if user is logged in if not add it to the About page
+    # TODO - Rather than doing a redirect to Quiz index page redirect to About page on Login
+    # TODO - Push changes to remote
+    # TODO - Merge changes to Development branch & push changes to remote
+    # TODO - Merge changes to master branch and push changes to remote
 
+
+
+# TODO - Create Drop Down Link or Menu for Quizes
+    # TODO - Create Features/Quiz_Drop_Down
+    #
 
 
 
