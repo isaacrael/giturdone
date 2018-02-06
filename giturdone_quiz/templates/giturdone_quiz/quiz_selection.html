@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiz Selection</title>
- <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+
+
+
 <style>
 a:link {
     color: black;
@@ -29,9 +37,10 @@ a:active {
     background-color: transparent;
     text-decoration: underline;
 }
+
 </style>
 
-</head>
+
 <body>
 <div class="w3-container" style="background-color: red;">
 {% if request.user.is_authenticated %}
@@ -49,13 +58,12 @@ a:active {
 </div>
 
 
-
 <div class="w3-container w3-yellow">
 <img src="/static/images/dj.png" style="width:25" align="right">
 <br>
 {% if request.user.is_authenticated %}
 <h3>
-    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/quiz/">Quiz |</a> <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
+    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/" target="_blank">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/quiz/" target="_blank">Quiz |</a> <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
 </h3>
 {% else %}
 <h3>
@@ -69,27 +77,14 @@ a:active {
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 <h3>
 <ul>
-<li>[1] Git Basics</li>
-<li>[2] Git Undoing Changes</li>
-<li>[3] Git Rewriting History</li>
-<li>[4] Git Branches</li>
-<li>[5] Git Remote Repositories</li>
-<li>[6] Git Config</li>
-<li>[7] Git Log</li>
-<li>[8] Git Diff</li>
-<li>[9] Git Reset</li>
-<li>[10] Git Rebase</li>
-<li>[11] Git Pull</li>
-<li>[12] Git Push</li>
+<li>[1] Short Answer Quiz</li>
+<li>[2] Feynman Technique Quiz</li>
+<li>[3] Multiple Choice Quiz</li>
 </ul>
 </h3>
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+ {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form method="POST" action="/quiz_selection/">
 {% csrf_token %}
   <table>{{ form.as_table }}</table>
@@ -99,19 +94,12 @@ and click on the Quiz menu option to take your quiz.</label>
   <input type="submit" value="Submit" maxlength="30"/>
 </form>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
 <br>
 <br>
 <br>
@@ -160,6 +148,6 @@ Software Developed By A Nerd For Nerds</center></p>
     </div>
 </div>
 
-</head>
+
 </body>
 </html>
