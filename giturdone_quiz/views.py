@@ -31,9 +31,8 @@ def index(request):
 
 # quiz_selection page takes a user_response as input and displays associated quiz on Sensei Quiz page
 
-"""
-def short_answer_quiz(request):
-    user_response = "None"
+
+def git_quiz(request):
     if request.method == 'POST':
         user_response = request.POST.get('textfield', None)
         user_response = smart_text(user_response)
@@ -41,9 +40,13 @@ def short_answer_quiz(request):
         # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
         f.write('user_response = ' + repr(str(user_response)))
         f.close()
+    else:
+        f = open('giturdone_quiz/user_response.py', 'r')
+        user_response = 'user_response'
+        f.close()
     return render(request, 'giturdone_quiz/index.html')
 
-"""
+
 
 
 def quiz_selection(request):
