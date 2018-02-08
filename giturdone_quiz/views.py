@@ -31,7 +31,9 @@ def index(request):
 
 # quiz_selection page takes a user_response as input and displays associated quiz on Sensei Quiz page
 
+"""
 def short_answer_quiz(request):
+    user_response = "None"
     if request.method == 'POST':
         user_response = request.POST.get('textfield', None)
         user_response = smart_text(user_response)
@@ -39,19 +41,19 @@ def short_answer_quiz(request):
         # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
         f.write('user_response = ' + repr(str(user_response)))
         f.close()
-    return render(request, 'giturdone_quiz/short_answer_quiz.html')
+    return render(request, 'giturdone_quiz/index.html')
 
-
+"""
 
 
 def quiz_selection(request):
     quiz_selection_user_response = 'None'
     if request.method == 'POST':
         quiz_selection_user_response = request.POST.get('textfield', None)
-        quiz_selection_user_response = smart_text(user_response)
+        quiz_selection_user_response = smart_text(quiz_selection_user_response)
         f = open('giturdone_quiz/quiz_selection_user_response.py', 'w')
         # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
-        f.write('quiz_selection_user_response = ' + repr(str(user_response)))
+        f.write('quiz_selection_user_response = ' + repr(str(quiz_selection_user_response)))
         f.close()
     if quiz_selection_user_response == 'None':
         return render(request, 'giturdone_quiz/quiz_selection.html')
@@ -67,13 +69,19 @@ def quiz_selection(request):
 
 # git_quiz displays the quiz selected by user in the Quiz Selection page
 
-def git_quiz(request):
+def short_answer_quiz(request):
+    user_response = "None"
+    if request.method == 'POST':
+        user_response = request.POST.get('textfield', None)
+        user_response = smart_text(user_response)
+        f = open('giturdone_quiz/user_response.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        f.write('user_response = ' + repr(str(user_response)))
+        f.close()
     if user_response == 'None':
         return render(request, 'giturdone_quiz/short_answer_quiz.html')
     if user_response == '1':
         latest_question_list = Question.objects.filter(category="Git Basics")
-        context = {'user_response': user_response, 'latest_question_list': latest_question_list}
-        return render(request, 'giturdone_quiz/index.html', context)
     if user_response == '2':
         latest_question_list = Question.objects.filter(category="Git Undoing Changes")
     if user_response == '3':
