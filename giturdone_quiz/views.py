@@ -168,3 +168,7 @@ def reset_scores(request):
 
 def feynman_technique_quiz(request):
     return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
+
+
+def multiple_choice_quiz(request):
+    return render(request, 'giturdone_quiz/multiple_choice_quiz.html')

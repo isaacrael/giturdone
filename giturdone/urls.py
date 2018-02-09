@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^$', 'giturdone_quiz.views.index', name='index'),
     url(r'^results/', 'giturdone_quiz.views.results', name='results'),
     url(r'^feynman_technique_quiz/', 'giturdone_quiz.views.feynman_technique_quiz', name='feynman_technique_quiz'),
+    url(r'^multiple_choice_quiz/', 'giturdone_quiz.views.multiple_choice_quiz', name='multiple_choice_quiz'),
 # Left line below in prod version for now just in case it is needed
 #    url(r'^quiz/', 'giturdone_quiz.views.git_quiz', name='git_quiz'),
     url(r'^account/', include('registration.backends.default.urls')),
