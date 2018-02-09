@@ -71,6 +71,15 @@ def quiz_selection(request):
 
 
 # git_quiz displays the quiz selected by user in the Quiz Selection page
+""" 
+
+attempted to add code below to read file variable info into user_response variable
+    if user_response == 'None':
+        execfile('giturdone_quiz/user_response.py')
+        user_response = str(user_response)
+        return render(request, 'giturdone_quiz/index.html')
+"""
+
 
 def short_answer_quiz(request):
     user_response = "None"
@@ -81,8 +90,6 @@ def short_answer_quiz(request):
         # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
         f.write('user_response = ' + repr(str(user_response)))
         f.close()
-    if user_response == 'None':
-        return render(request, 'giturdone_quiz/short_answer_quiz.html')
     if user_response == '1':
         latest_question_list = Question.objects.filter(category="Git Basics")
     if user_response == '2':
