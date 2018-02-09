@@ -154,3 +154,6 @@ def reset_scores(request):
         answer_item.total_wrong_answers = 0
         answer_item.save()
     return render(request, 'giturdone_quiz/reset_scores.html')
+
+def feynman_technique_quiz(request):
+    return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
