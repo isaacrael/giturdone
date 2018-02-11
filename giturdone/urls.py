@@ -12,6 +12,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^quiz/', include('giturdone_quiz.urls', namespace="giturdone_quiz")),
     url(r'^quiz_selection/', 'giturdone_quiz.views.quiz_selection', name='quiz_selection'),
+    url(r'^short_answer_quiz_categories/', 'giturdone_quiz.views.short_answer_quiz_categories', name='short_answer_quiz_categories'),
     url(r'^$', 'giturdone_quiz.views.index', name='index'),
     url(r'^results/', 'giturdone_quiz.views.results', name='results'),
     url(r'^feynman_technique_quiz/', 'giturdone_quiz.views.feynman_technique_quiz', name='feynman_technique_quiz'),
