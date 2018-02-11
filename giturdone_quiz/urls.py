@@ -14,6 +14,7 @@ urlpatterns = [
     # ex: /quiz/5/results/
     url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
     url(r'^reset_scores/', views.reset_scores, name='reset_scores'),
+url(r'^short_answer_quiz_categories/', 'giturdone_quiz.views.short_answer_quiz_categories', name='short_answer_quiz_categories'),
     url(r'^feynman_technique_quiz/', views.feynman_technique_quiz, name='feynman_technique_quiz'),
     url(r'^multiple_choice_quiz/', views.feynman_technique_quiz, name='multiple_choice_quiz'),
     # ex: /quiz/5/vote/
