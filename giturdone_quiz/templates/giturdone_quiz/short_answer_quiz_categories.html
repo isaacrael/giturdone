@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz Selection</title>
+    <title>Short Answer Quiz Categories</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -90,7 +90,7 @@ a:active {
 </h3>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form method="POST" action="/quiz_selection/">
+<form method="POST" action="/quiz/">
 {% csrf_token %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Please, type in the number that corresponds to the quiz that you would like to take then click submit
