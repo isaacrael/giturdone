@@ -13,6 +13,7 @@ from django.utils.encoding import *
 from . user_response import user_response
 from processors import custom_processor
 from django.db.models import Sum
+from . models import Ftq_Question, Ftq_Answer
 
 # TODO add comments to this module
 # TODO add a button that allows computer user to zero out their scores
@@ -173,8 +174,41 @@ def short_answer_quiz_categories(request):
         return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
 
 def feynman_technique_quiz(request):
-    return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
+    ftq_questions = Ftq_Question.objects.all()
+    context = {'ftq_questions': ftq_questions}
+    return render(request, 'giturdone_quiz/feynman_technique_quiz.html', context)
 
+def ftq_detail(request, question_id):
+    question = get_object_or_404(Ftq_Question, pk=question_id)
+    return render(request, 'giturdone_quiz/ftq_detail.html', {'question': question})
+
+def ftq_results(request, question_id):
+    if request.method == 'POST':
+        question = get_object_or_404(Ftq_Question, pk=question_id)
+        selected_answer = Ftq_Answer.objects.get(pk=question_id)
+        # Gets my_answer -> the answer associated with question_id
+        my_answer = Ftq_Answer.objects.filter(question_id=question_id)
+        # Get the image "post_image/filename" for my_answer
+        for item in my_answer:
+            image = item.image
+        image = str(item.image)
+
+        # Concatenates "/media/" + "post_image/filename"
+        image = ("/media/" + (image))
+        user_answer = request.POST.get('textfield', None)
+        # Get the question object
+        q = Ftq_Question.objects.get(pk=question_id)
+        # Get all the answers associated with the question object
+        a = q.ftq_answer_set.all()
+        # Get the first element in the list of answers
+        value = a[0]
+        # smart_text is a django utility that converts an object to a unicode string
+        correct_answer = smart_text(value)
+        context = {'latest_question_list': latest_question_list, 'answer': user_answer,
+        'question': question, 'correct_answer': correct_answer, 'Grade':Grade,
+        'score':score, 'total_questions_answered': ttl_questions_answered,
+        'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w, 'image': image}
+    return render(request, 'giturdone_quiz/ftq_results.html', context)
 
 def multiple_choice_quiz(request):
     return render(request, 'giturdone_quiz/multiple_choice_quiz.html')
