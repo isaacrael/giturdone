@@ -55,7 +55,7 @@ a:active {
 <br>
 {% if request.user.is_authenticated %}
 <h3>
-    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/quiz/">Quiz |</a> <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
+    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
 </h3>
 {% else %}
 <h3>
@@ -90,7 +90,7 @@ a:active {
 </h3>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form method="POST" action="/quiz/">
+<form method="POST" action="/quiz_selection/">
 {% csrf_token %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Please, type in the number that corresponds to the quiz that you would like to take then click submit
