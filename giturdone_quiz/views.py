@@ -166,6 +166,9 @@ def reset_scores(request):
         answer_item.save()
     return render(request, 'giturdone_quiz/reset_scores.html')
 
+def short_answer_quiz_categories(request):
+    return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
+
 def feynman_technique_quiz(request):
     return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
 
