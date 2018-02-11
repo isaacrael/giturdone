@@ -167,7 +167,10 @@ def reset_scores(request):
     return render(request, 'giturdone_quiz/reset_scores.html')
 
 def short_answer_quiz_categories(request):
-    return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
+    if request.method == 'POST':
+        return render(request, 'giturdone_quiz/index.html')
+    else:
+        return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
 
 def feynman_technique_quiz(request):
     return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
