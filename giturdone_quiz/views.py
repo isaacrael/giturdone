@@ -204,11 +204,23 @@ def ftq_results(request, question_id):
         value = a[0]
         # smart_text is a django utility that converts an object to a unicode string
         correct_answer = smart_text(value)
-        context = {'latest_question_list': latest_question_list, 'answer': user_answer,
-        'question': question, 'correct_answer': correct_answer, 'Grade':Grade,
-        'score':score, 'total_questions_answered': ttl_questions_answered,
-        'total_correct_answers': ttl_c, 'total_wrong_answers': ttl_w, 'image': image}
-    return render(request, 'giturdone_quiz/ftq_results.html', context)
+        context = {'answer': user_answer,
+        'question': question, 'correct_answer': correct_answer,
+        'image': image}
+    return render(request, 'giturdone_quiz/ftq_results.html')
+
+def ftq_reset_scores(request):
+    answer_item = 0
+    answers = Ftq_Answer.objects.all()
+    """    for answer_item in answers:
+        answer_item.total_correct_answers = 0
+        answer_item.total_wrong_answers = 0
+        answer_item.save()
+    """
+    return render(request, 'giturdone_quiz/ftq_reset_scores.html')
+
+
+
 
 def multiple_choice_quiz(request):
     return render(request, 'giturdone_quiz/multiple_choice_quiz.html')
