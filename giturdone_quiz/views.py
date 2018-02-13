@@ -185,29 +185,30 @@ def ftq_detail(request, question_id):
 def ftq_results(request, question_id):
     if request.method == 'POST':
         question = get_object_or_404(Ftq_Question, pk=question_id)
-        selected_answer = Ftq_Answer.objects.get(pk=question_id)
+        #question = Ftq_Question.objects.filter(question_id=pk)
+        #question = "test"
         # Gets my_answer -> the answer associated with question_id
-        my_answer = Ftq_Answer.objects.filter(question_id=question_id)
+        correct_answer = Ftq_Answer.objects.filter(question_id=question_id)
         # Get the image "post_image/filename" for my_answer
-        for item in my_answer:
+        for item in correct_answer:
+            correct_answer = item.answer_text
             image = item.image
         image = str(item.image)
 
         # Concatenates "/media/" + "post_image/filename"
         image = ("/media/" + (image))
-        user_answer = request.POST.get('textfield', None)
+        #user_answer = request.POST.get('textfield', None)
         # Get the question object
         q = Ftq_Question.objects.get(pk=question_id)
         # Get all the answers associated with the question object
         a = q.ftq_answer_set.all()
         # Get the first element in the list of answers
-        value = a[0]
+        #value = a[0]
         # smart_text is a django utility that converts an object to a unicode string
-        correct_answer = smart_text(value)
-        context = {'answer': user_answer,
-        'question': question, 'correct_answer': correct_answer,
-        'image': image}
-    return render(request, 'giturdone_quiz/ftq_results.html')
+        #correct_answer = smart_text(value)
+        context = {'question': question, 'correct_answer': correct_answer,
+        'image': image, 'id': id}
+    return render(request, 'giturdone_quiz/ftq_results.html', context)
 
 def ftq_reset_scores(request):
     answer_item = 0
