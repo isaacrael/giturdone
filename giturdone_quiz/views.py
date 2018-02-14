@@ -172,6 +172,12 @@ def short_answer_quiz_categories(request):
     else:
         return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
 
+
+def tools(request):
+    return render(request, 'giturdone_quiz/tools.html')
+
+
+
 def feynman_technique_quiz(request):
     return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
 
