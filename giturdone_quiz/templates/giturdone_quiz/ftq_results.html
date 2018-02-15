@@ -156,22 +156,40 @@ Click me to display Date and Time.</button>
     <p id="demo"></p>
 
 <br>
+
+
+
     <button type="button"
-onclick="document.getElementById('add_data').innerHTML = {{ knowledge_mastery }}">
+onclick="document.getElementById('add_data').innerHTML = add_data">
 Click me to display Mastery Value.</button>
 
-    <p id="add_data"></p>
+    <p id="add_data">{{ knowledge_mastery }}</p>
 
-<script type="text/javascript">
+
+
+
+<button type="button" onclick="myFunction()">Try My Function</button>
+
+
+
+<p id="test"></p>
+
+
+
+<script>
+ function myFunction()
+ document.getElementById("test").innerHTML = 5 + 6;
+ {
 
     { % for item in correct_answer % }
         {{ item }}
     { % endfor % }
 
-
+    <h1>Your in my function!</h1>
     {% if image.7 == "p" %}
             <img src= "{{ image }}" style="width:250px;height:250px;">
     {% endif %}
+ }
 
 </script>
 
