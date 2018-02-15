@@ -189,25 +189,24 @@ def ftq_results(request, question_id):
         #question = "test"
         # Gets my_answer -> the answer associated with question_id
         correct_answer = Ftq_Answer.objects.filter(question_id=question_id)
-        # Get the image "post_image/filename" for my_answer
+        # Initial the "knowledge field values to 0"
+        knowledge_mastery = 0
+        knowledge_needs_improvement = 0
+        knowledge_black_hole = 0
         for item in correct_answer:
             correct_answer = item.answer_text
             image = item.image
+            knowledge_mastery = item.knowledge_mastery
+            knowledge_needs_improvement = item.knowledge_needs_improvement
+            knowledge_black_hole = item.knowledge_black_hole
         image = str(item.image)
-
+        # Get the image "post_image/filename" for my_answer
         # Concatenates "/media/" + "post_image/filename"
         image = ("/media/" + (image))
-        #user_answer = request.POST.get('textfield', None)
-        # Get the question object
-        q = Ftq_Question.objects.get(pk=question_id)
-        # Get all the answers associated with the question object
-        a = q.ftq_answer_set.all()
-        # Get the first element in the list of answers
-        #value = a[0]
-        # smart_text is a django utility that converts an object to a unicode string
-        #correct_answer = smart_text(value)
+        # context dictionary allows the key value pairs to be available to the ftq_results.html page
         context = {'question': question, 'correct_answer': correct_answer,
-        'image': image, 'id': id}
+        'image': image, 'knowledge_mastery': knowledge_mastery,
+        'knowledge_needs_improvement': knowledge_needs_improvement, 'knowledge_black_hole': knowledge_black_hole}
     return render(request, 'giturdone_quiz/ftq_results.html', context)
 
 def ftq_reset_scores(request):
