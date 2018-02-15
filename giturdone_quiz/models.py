@@ -50,10 +50,11 @@ class Ftq_Question(models.Model):
 class Ftq_Answer(models.Model):
     question = models.ForeignKey(Ftq_Question)
     answer_text = models.CharField(max_length=600)
+    image = models.ImageField(upload_to='post_image', blank=True)
     knowledge_mastery = models.IntegerField(default=0)
     knowledge_needs_improvement = models.IntegerField(default=0)
     knowledge_black_hole = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='post_image', blank=True)
+
 
     def __unicode__(self):
         return self.answer_text
