@@ -27,10 +27,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('answer_text', models.CharField(max_length=600)),
+                ('image', models.ImageField(upload_to=b'post_image', blank=True)),
                 ('knowledge_mastery', models.IntegerField(default=0)),
                 ('knowledge_needs_improvement', models.IntegerField(default=0)),
                 ('knowledge_black_hole', models.IntegerField(default=0)),
-                ('image', models.ImageField(upload_to=b'post_image', blank=True)),
             ],
         ),
         migrations.CreateModel(

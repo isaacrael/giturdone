@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('giturdone_quiz', '0005_answer_total_correct_answers'),
+        ('giturdone_quiz', '0002_remove_ftq_answer_knowledge_needs_improvement'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='answer',
-            name='total_wrong_answers',
+            model_name='ftq_answer',
+            name='knowledge_needs_improvement',
             field=models.IntegerField(default=0),
         ),
     ]

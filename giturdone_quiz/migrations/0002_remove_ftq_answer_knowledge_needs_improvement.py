@@ -7,12 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('giturdone_quiz', '0002_answer_image'),
+        ('giturdone_quiz', '0001_initial'),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='answer',
-            name='image',
+            model_name='ftq_answer',
+            name='knowledge_needs_improvement',
         ),
     ]
