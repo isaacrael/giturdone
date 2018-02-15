@@ -139,11 +139,43 @@ a:active {
  </p>
 
 
-    <button type="button" class="btn btn-success">Mastery</button>
+    <button type="button" class="btn btn-primary" onclick="">Mastery</button>
+    {{ knowledge_mastery }}
 
     <button type="button" class="btn btn-primary">Needs Improvement</button>
+    {{ knowledge_needs_improvement }}
 
     <button type="button" class="btn btn-danger">Hole</button>
+    {{ knowledge_black_hole }}
+
+<br>
+    <button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+    <p id="demo"></p>
+
+<br>
+    <button type="button"
+onclick="document.getElementById('add_data').innerHTML = {{ knowledge_mastery }}">
+Click me to display Mastery Value.</button>
+
+    <p id="add_data"></p>
+
+<script type="text/javascript">
+
+    { % for item in correct_answer % }
+        {{ item }}
+    { % endfor % }
+
+
+    {% if image.7 == "p" %}
+            <img src= "{{ image }}" style="width:250px;height:250px;">
+    {% endif %}
+
+</script>
+
+
 <br>
 <br>
 <br>
