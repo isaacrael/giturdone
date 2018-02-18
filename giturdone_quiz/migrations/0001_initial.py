@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             name='Ftq_Answer',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('answer_text', models.CharField(max_length=600)),
+                ('answer_text', models.CharField(max_length=1200)),
                 ('image', models.ImageField(upload_to=b'post_image', blank=True)),
                 ('knowledge_mastery', models.IntegerField(default=0)),
                 ('knowledge_needs_improvement', models.IntegerField(default=0)),
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             name='Ftq_Question',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('question_text', models.CharField(max_length=200)),
+                ('question_text', models.CharField(max_length=400)),
                 ('pub_date', models.DateTimeField(verbose_name=b'date published')),
             ],
         ),
