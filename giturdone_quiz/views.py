@@ -88,7 +88,7 @@ def results(request, question_id):
     latest_question_list = Question.objects.order_by('?')
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
-        selected_answer = Answer.objects.get(pk=question_id)
+        selected_answer = Answer.objects.get(question_id=question.id)
         # Gets my_answer -> the answer associated with question_id
         my_answer = Answer.objects.filter(question_id=question_id)
         # Get the image "post_image/filename" for my_answer
@@ -188,7 +188,7 @@ def ftq_results(request, question_id):
         #question = Ftq_Question.objects.filter(question_id=pk)
         #question = "test"
         # Gets my_answer -> the answer associated with question_id
-        correct_answer = Ftq_Answer.objects.filter(question_id=question_id)
+        correct_answer = Ftq_Answer.objects.filter(question_id=question.id)
         # Initial the "knowledge field values to 0"
         knowledge_mastery = 0
         knowledge_needs_improvement = 0
