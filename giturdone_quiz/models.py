@@ -32,3 +32,30 @@ class Answer(models.Model):
     def __unicode__(self):
         return self.answer_text
 
+
+class Ftq_Question(models.Model):
+    question_text = models.CharField(max_length=400)
+    pub_date = models.DateTimeField('date published')
+
+    def __unicode__(self):
+        return self.question_text
+
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+
+
+class Ftq_Answer(models.Model):
+    question = models.ForeignKey(Ftq_Question)
+    answer_text = models.CharField(max_length=1200)
+    image = models.ImageField(upload_to='post_image', blank=True)
+    knowledge_mastery = models.IntegerField(default=0)
+    knowledge_needs_improvement = models.IntegerField(default=0)
+    knowledge_black_hole = models.IntegerField(default=0)
+
+
+    def __unicode__(self):
+        return self.answer_text
+
