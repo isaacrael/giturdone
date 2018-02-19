@@ -105,9 +105,22 @@ If you are using overly wordy or confusing language (or simply paraphrasing the 
 Conclusion
 
 That's it. A simple and powerful technique to ensure you can rapidly learn and retain new concepts and information.
+<br>
+<br>
+Click on Question Below
+
 </h3>
 
 
+{% if ftq_questions %}
+    <ul>
+    {% for question in ftq_questions %}
+        <li><a href="{% url 'giturdone_quiz:ftq_detail' question.id %}">{{ question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}
 <br>
 <br>
 <br>
@@ -141,6 +154,7 @@ That's it. A simple and powerful technique to ensure you can rapidly learn and r
 <br>
 </p>
 </div>
+
 <!--<div class="w3-container w3-blue">
   <h5>
 
