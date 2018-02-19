@@ -230,3 +230,8 @@ def ftq_reset_scores(request):
 
 def multiple_choice_quiz(request):
     return render(request, 'giturdone_quiz/multiple_choice_quiz.html')
+
+
+
+def short_answer_quiz_graphs(request):
+    return render(request, 'giturdone_quiz/short_answer_quiz_graphs.html')
