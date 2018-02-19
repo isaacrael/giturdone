@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^feynman_technique_quiz/(?P<question_id>[0-9]+)/results/$', 'giturdone_quiz.views.ftq_results', name='ftq_results'),
     url(r'^feynman_technique_quiz/reset_scores/$', views.ftq_reset_scores, name='ftq_reset_scores'),
     url(r'^multiple_choice_quiz/', views.multiple_choice_quiz, name='multiple_choice_quiz'),
+    url(r'^short_answer_quiz_graphs/', views.short_answer_quiz_graphs, name='short_answer_quiz_graphs'),
     # ex: /quiz/5/vote/
 # Note: the answers url is not being used in the app but is left here
 # as an example for future versions
