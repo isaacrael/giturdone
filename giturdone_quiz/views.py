@@ -13,6 +13,7 @@ from django.utils.encoding import *
 from . user_response import user_response
 from processors import custom_processor
 from django.db.models import Sum
+from . models import Ftq_Question, Ftq_Answer
 
 # TODO add comments to this module
 # TODO add a button that allows computer user to zero out their scores
@@ -87,7 +88,7 @@ def results(request, question_id):
     latest_question_list = Question.objects.order_by('?')
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=question_id)
-        selected_answer = Answer.objects.get(pk=question_id)
+        selected_answer = Answer.objects.get(question_id=question.id)
         # Gets my_answer -> the answer associated with question_id
         my_answer = Answer.objects.filter(question_id=question_id)
         # Get the image "post_image/filename" for my_answer
@@ -179,7 +180,52 @@ def tools(request):
 
 
 def feynman_technique_quiz(request):
-    return render(request, 'giturdone_quiz/feynman_technique_quiz.html')
+    ftq_questions = Ftq_Question.objects.all()
+    context = {'ftq_questions': ftq_questions}
+    return render(request, 'giturdone_quiz/feynman_technique_quiz.html', context)
+
+def ftq_detail(request, question_id):
+    question = get_object_or_404(Ftq_Question, pk=question_id)
+    return render(request, 'giturdone_quiz/ftq_detail.html', {'question': question})
+
+def ftq_results(request, question_id):
+    if request.method == 'POST':
+        question = get_object_or_404(Ftq_Question, pk=question_id)
+        #question = Ftq_Question.objects.filter(question_id=pk)
+        #question = "test"
+        # Gets my_answer -> the answer associated with question_id
+        correct_answer = Ftq_Answer.objects.filter(question_id=question.id)
+        # Initial the "knowledge field values to 0"
+        knowledge_mastery = 0
+        knowledge_needs_improvement = 0
+        knowledge_black_hole = 0
+        for item in correct_answer:
+            correct_answer = item.answer_text
+            image = item.image
+            knowledge_mastery = item.knowledge_mastery
+            knowledge_needs_improvement = item.knowledge_needs_improvement
+            knowledge_black_hole = item.knowledge_black_hole
+        image = str(item.image)
+        # Get the image "post_image/filename" for my_answer
+        # Concatenates "/media/" + "post_image/filename"
+        image = ("/media/" + (image))
+        # context dictionary allows the key value pairs to be available to the ftq_results.html page
+        context = {'question': question, 'correct_answer': correct_answer,
+        'image': image, 'knowledge_mastery': knowledge_mastery,
+        'knowledge_needs_improvement': knowledge_needs_improvement, 'knowledge_black_hole': knowledge_black_hole}
+    return render(request, 'giturdone_quiz/ftq_results.html', context)
+
+def ftq_reset_scores(request):
+    answer_item = 0
+    answers = Ftq_Answer.objects.all()
+    """    for answer_item in answers:
+        answer_item.total_correct_answers = 0
+        answer_item.total_wrong_answers = 0
+        answer_item.save()
+    """
+    return render(request, 'giturdone_quiz/ftq_reset_scores.html')
+
+
 
 
 def multiple_choice_quiz(request):
