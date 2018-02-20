@@ -234,4 +234,17 @@ def multiple_choice_quiz(request):
 
 
 def short_answer_quiz_graphs(request):
+    import plotly.plotly as py
+    import plotly.graph_objs as go
+    import plotly.tools as tls
+
+    labels = ['Oxygen', 'Hydrogen', 'Carbon_Dioxide', 'Nitrogen']
+    values = [4500, 2500, 1053, 500]
+
+    trace = go.Pie(labels=labels, values=values)
+
+    py.plot([trace], filename='giturdone_quiz/short_answer_quiz_graphs.html')
+
+
+#    tls.get_embed('http://localhost:8000/short_answer_quiz_graphs')
     return render(request, 'giturdone_quiz/short_answer_quiz_graphs.html')
