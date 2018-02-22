@@ -14,6 +14,7 @@ from . user_response import user_response
 from processors import custom_processor
 from django.db.models import Sum
 from . models import Ftq_Question, Ftq_Answer
+from . models import Mc_Question, Mc_Answer
 
 # TODO add comments to this module
 # TODO add a button that allows computer user to zero out their scores
@@ -178,6 +179,8 @@ def tools(request):
     return render(request, 'giturdone_quiz/tools.html')
 
 
+# The functions below are for the Feynman Technique quiz
+
 
 def feynman_technique_quiz(request):
     ftq_questions = Ftq_Question.objects.all()
@@ -226,7 +229,41 @@ def ftq_reset_scores(request):
     return render(request, 'giturdone_quiz/ftq_reset_scores.html')
 
 
+# The functions below are the views for the multiple choice quiz
+
 
 
 def multiple_choice_quiz(request):
-    return render(request, 'giturdone_quiz/multiple_choice_quiz.html')
+    latest_question_list = Mc_Question.objects.order_by('-pub_date')[:5]
+    context = {'latest_question_list': latest_question_list}
+    return render(request, 'giturdone_quiz/multiple_choice_quiz.html', context)
+
+
+def multiple_choice_quiz_detail(request, question_id):
+    question = get_object_or_404(Mc_Question, pk=question_id)
+    return render(request, 'giturdone_quiz/multiple_choice_quiz_detail.html', {'question': question})
+
+
+def multiple_choice_quiz_results(request, question_id):
+    question = get_object_or_404(Mc_Question, pk=question_id)
+    return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', {'question': question})
+
+
+
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_answer = question.answer_set.get(pk=request.POST['answer'])
+    except (KeyError, Answer.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "You didn't select an answer.",
+        })
+    else:
+        selected_answer.votes += 1
+        selected_answer.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
