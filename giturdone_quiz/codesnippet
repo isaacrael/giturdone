@@ -1,0 +1,13 @@
+>>> answers = Mc_Answer.objects.filter(question_id=question.id)
+>>> for item in answers:
+...    print(item.answer_text)
+...
+git initialize
+git initialize repo
+git init
+>>> for item in answers:
+...    print(item.question.id)
+...
+1
+1
+1
