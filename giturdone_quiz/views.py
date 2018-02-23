@@ -249,6 +249,11 @@ def vote(request, question_id):
     question = get_object_or_404(Mc_Question, pk=question_id)
     try:
         selected_answer = question.mc_answer_set.get(pk=request.POST['answer'])
+        user_selected_answer = smart_text(selected_answer)
+        f = open('giturdone_quiz/selected_answer.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        f.write('user_selected_answer = ' + repr(str(user_selected_answer)))
+        f.close()
     except (KeyError, Answer.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'giturdone_quiz/multiple_choice_quiz_detail.html', {
