@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from . models import Answer, Question
 import random
@@ -261,7 +262,9 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         # Note: giturdone_quiz:multiple_choice_quiz_results calls the multiple_choice_quiz_results function
+        context = {'selected_answer': selected_answer}
         return HttpResponseRedirect(reverse('giturdone_quiz:multiple_choice_quiz_results', args=(question.id,)))
+        #return redirect('giturdone_quiz:multiple_choice_quiz_results', kwargs=(context, question_id))
 
 
 def multiple_choice_quiz_results(request, question_id):
