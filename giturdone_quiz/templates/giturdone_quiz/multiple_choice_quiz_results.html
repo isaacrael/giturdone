@@ -96,7 +96,7 @@ a:active {
 <!--<input align="left" class="textinput textInput form-control size=50" id="id_name" maxlength="50" name="textfield" type="text" style="width:400px"/></p>
   <input type="submit" style=color:red value="Reset Scores To Zero" /></p>-->
 <br>
-  <button type="submit" class="btn btn-danger btn-sm id="id_name">Reset Feynman Quiz Scores To Zero</button>
+  <button type="submit" class="btn btn-danger btn-sm id="id_name">Reset Multiple Choice Quiz Scores To Zero</button>
 </form>
 
 <br>
@@ -110,7 +110,7 @@ a:active {
 <br>
 <br>
 
-        <h3 style="color:blue">The correct answer is</h3><h3 style="color:green;">{{ correct_answer }}</h3>
+        <h3 style="color:blue">The question is {{ question.question_text }} The selected answer is {{ selected_answer}}</h3><h3 style="color:green;">{{ correct_answer }}</h3>
 
 <br>
 
@@ -119,10 +119,11 @@ a:active {
             <img src= "{{ image }}" style="width:250px;height:250px;">
     {% endif %}
 
-<h1>{{ question.question_text }}</h1>
+<!--<h1>{{ question.question_text }}</h1>
 
+<h1>This is the results page!</h1>-->
 
-{% for answer in question.answer_set.all %}
+{% for answer in question.mc_answer_set.all %}
     {% if answer.votes = value %}
         <h3>You chose {{ answer.answer_text }}</h3>
     {% endif %}
@@ -130,7 +131,7 @@ a:active {
 {% endfor %}
 </ul>
 
-<a href="{% url 'giturdone_quiz:multiple_choice_quiz_detail' question.id %}">Vote again?</a>
+<!--<a href="{% url 'giturdone_quiz:multiple_choice_quiz_detail' question.id %}">Vote again?</a>-->
 
 
 
