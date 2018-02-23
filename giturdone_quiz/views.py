@@ -244,11 +244,37 @@ def multiple_choice_quiz_detail(request, question_id):
     return render(request, 'giturdone_quiz/multiple_choice_quiz_detail.html', {'question': question})
 
 
-def multiple_choice_quiz_results(request, question_id):
+def vote(request, question_id):
     question = get_object_or_404(Mc_Question, pk=question_id)
-    return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', {'question': question})
+    try:
+        selected_answer = question.mc_answer_set.get(pk=request.POST['answer'])
+    except (KeyError, Answer.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'giturdone_quiz/multiple_choice_quiz_detail.html', {
+            'question': question,
+            'error_message': "You didn't select an answer.",
+        })
+    else:
+        selected_answer.votes += 1
+        selected_answer.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        # Note: giturdone_quiz:multiple_choice_quiz_results calls the multiple_choice_quiz_results function
+        return HttpResponseRedirect(reverse('giturdone_quiz:multiple_choice_quiz_results', args=(question.id,)))
 
 
+def multiple_choice_quiz_results(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+#    selected_answer = question.mc_answer_set.get(question_id=question.id)
+    context = {'question': question}
+    return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', context )
+
+
+
+
+
+"""
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -267,3 +293,4 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+"""
