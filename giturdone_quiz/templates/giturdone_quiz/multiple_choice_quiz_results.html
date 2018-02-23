@@ -105,12 +105,12 @@ a:active {
 <center>
 
 
-
+<h3>{{value}}</h3>
 
 <br>
 <br>
 
-        <h3 style="color:blue">The question is {{ question.question_text }} The selected answer is {{ selected_answer}}</h3><h3 style="color:green;">{{ correct_answer }}</h3>
+        <h3 style="color:blue">The question is {{ question.question_text }} The selected answer is {{ value }}</h3><h3 style="color:green;">{{ correct_answer }}</h3>
 
 <br>
 
@@ -122,6 +122,7 @@ a:active {
 <!--<h1>{{ question.question_text }}</h1>
 
 <h1>This is the results page!</h1>-->
+
 
 {% for answer in question.mc_answer_set.all %}
     {% if answer.votes = value %}
