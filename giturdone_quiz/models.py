@@ -77,6 +77,8 @@ class Mc_Answer(models.Model):
     question = models.ForeignKey(Mc_Question)
     answer_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
+    correct_answer = models.CharField(max_length=200, default='Linus Torvalds')
+    image = models.ImageField(upload_to='post_image', blank=True)
 
     def __unicode__(self):
         return self.answer_text
