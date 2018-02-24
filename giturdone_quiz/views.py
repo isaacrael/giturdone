@@ -252,7 +252,7 @@ def vote(request, question_id):
         user_selected_answer = smart_text(selected_answer)
         f = open('giturdone_quiz/selected_answer.py', 'w')
         # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
-        f.write('user_selected_answer = ' + repr(str(user_selected_answer)))
+        f.write(str(user_selected_answer))
         f.close()
     except (KeyError, Answer.DoesNotExist):
         # Redisplay the question voting form.
@@ -274,10 +274,24 @@ def vote(request, question_id):
 
 def multiple_choice_quiz_results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-#    selected_answer = question.mc_answer_set.get(question_id=question.id)
-    context = {'question': question}
+    user_selected_answer = ""
+    f = open('giturdone_quiz/selected_answer.py', 'rb')
+    user_selected_answer = f.read()
+    f.close()
+    user_selected_answer = smart_text(user_selected_answer)
+    answers = Mc_Answer.objects.filter(question_id=question.id)
+    for answer in answers:
+        correct_answer = answer.correct_answer
+    context = {'question': question, 'user_selected_answer': user_selected_answer, 'correct_answer': correct_answer}
     return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', context )
 
+"""    
+    user_selected_answer = smart_text(selected_answer)
+    f = open('giturdone_quiz/selected_answer.py', 'r')
+    f.read('user_selected_answer = ' + repr(str(user_selected_answer)))
+    f.close()
+    selected_answer = question.mc_answer_set.get(question_id=question.id)
+"""
 
 
 
