@@ -282,7 +282,13 @@ def multiple_choice_quiz_results(request, question_id):
     answers = Mc_Answer.objects.filter(question_id=question.id)
     for answer in answers:
         correct_answer = answer.correct_answer
-    context = {'question': question, 'user_selected_answer': user_selected_answer, 'correct_answer': correct_answer}
+        image = answer.image
+    image = str(answer.image)
+    # Get the image "post_image/filename" for my_answer
+    # Concatenates "/media/" + "post_image/filename"
+    image = ("/media/" + (image))
+    context = {'question': question, 'user_selected_answer': user_selected_answer,
+    'correct_answer': correct_answer, 'image': image}
     return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', context )
 
 """    
