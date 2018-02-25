@@ -111,22 +111,21 @@ a:active {
 <br>
 
 
-
 <br>
 
       {% if correct_answer == user_selected_answer %}
         <img src="/static/images/two_thumbs_up.png" style="width:125px;height:100px;">
         <h3 style="color:blue">Yep!...the correct answer is</h3><h3 style="color:green">{{ user_selected_answer }} </h3>
-<!--        <img src= "{{ image }}" style="width:50px;height:50px;">-->
-    {% else %}
+      {% else %}
         <img src="/static/images/thumbs_down.png" style="width:125px;height:100px;">
         <h3 style="color:blue">Nope!....the correct answer is</h3><h3 style="color:green"> {{ correct_answer }}</h3><br>
         <h3 style="color:blue"> Your answer was</h3><h3 style="color:red"> {{ user_selected_answer }} </h3>
-    {% endif %}
+      {% endif %}
+
 <!-- if the 7th element is a string then "post" included in /image/post/*.png -->
-    {% if image.7 == "p" %}
+{% if image.7 == "p" and correct_answer == user_selected_answer %}
             <img src= "{{ image }}" style="width:250px;height:250px;">
-    {% endif %}
+{% endif %}
 
 
 
