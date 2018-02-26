@@ -291,34 +291,3 @@ def multiple_choice_quiz_results(request, question_id):
     'correct_answer': correct_answer, 'image': image}
     return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', context )
 
-"""    
-    user_selected_answer = smart_text(selected_answer)
-    f = open('giturdone_quiz/selected_answer.py', 'r')
-    f.read('user_selected_answer = ' + repr(str(user_selected_answer)))
-    f.close()
-    selected_answer = question.mc_answer_set.get(question_id=question.id)
-"""
-
-
-
-
-"""
-
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_answer = question.answer_set.get(pk=request.POST['answer'])
-    except (KeyError, Answer.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': "You didn't select an answer.",
-        })
-    else:
-        selected_answer.votes += 1
-        selected_answer.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-"""
