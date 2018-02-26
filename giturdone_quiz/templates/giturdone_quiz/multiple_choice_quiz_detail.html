@@ -1,8 +1,13 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Multiple_Choice_Quiz</title>
+    <title>Multiple_Choice_Quiz_Detail</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -80,18 +85,25 @@ a:active {
 <br>
 <br>
 <br>
+<h3>{{selected_answer}}</h3>
 <br>
 <br>
-<br>
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'giturdone_quiz:multiple_choice_quiz_detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No multiple choice questions are available.</p>
-{% endif %}
+<h1>This is the detail page!</h1>
+
+ <h2 style="color:blue;">{{ question.question_text }}</h2>
+
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'giturdone_quiz:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for answer in question.mc_answer_set.all %}
+    <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
+    <label for="answer{{ forloop.counter }}">{{ answer.answer_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
 
 <br>
 <br>
@@ -135,4 +147,28 @@ Software Developed By A Nerd For Nerds</center></p>
 </head>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

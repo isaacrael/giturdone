@@ -4,6 +4,8 @@ from . models import Answer, Question
 
 from . models import Ftq_Question, Ftq_Answer
 
+from . models import Mc_Question, Mc_Answer
+
 # Register your models here.
 
 """
@@ -51,6 +53,15 @@ class FTQ_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']
 
 
+class Mc_AnswerInLine(admin.TabularInline):
+    model = Answer
+    extra = 3
+
+class Mc_QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
+    list_filter = ['pub_date']
+    search_fields = ['question_text']
+
 # Note: the two lines below register the Answer and Question classes
 # so that Question & Answers are visible together in the admin site
 # making Question & Answer input and deletion very fast
@@ -66,3 +77,9 @@ admin.site.register(Question)
 admin.site.register(Ftq_Answer)
 
 admin.site.register(Ftq_Question)
+
+
+admin.site.register(Mc_Answer)
+
+admin.site.register(Mc_Question)
+

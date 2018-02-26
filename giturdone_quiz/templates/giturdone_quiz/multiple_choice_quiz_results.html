@@ -2,22 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FT Quiz Results</title>
+    <title>MC Quiz Results</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
-
-<!-- TODO add mark up to display button to allow computer user to zero out score vars -->
-<!-- TODO replace Correct! and Wrong! with icon possibly thumbs up and thumbs down future versions may include random displaying of icons-->
-<!-- TODO future versions could display java script or CSS animations -->
-<!-- TODO draw a red box around existing text in score calculator info -->
-<!-- TODO add a Feynman Technique Quiz possibly incorporating SRS functionality-->
-<!-- TODO add images to go along with answers to incorporate visual senses while learning -->
-
-
-
 
 
 
@@ -106,95 +96,71 @@ a:active {
 <!--<input align="left" class="textinput textInput form-control size=50" id="id_name" maxlength="50" name="textfield" type="text" style="width:400px"/></p>
   <input type="submit" style=color:red value="Reset Scores To Zero" /></p>-->
 <br>
-  <button type="submit" class="btn btn-danger btn-sm id="id_name">Reset Feynman Quiz Scores To Zero</button>
+  <button type="submit" class="btn btn-danger btn-sm id="id_name">Reset Multiple Choice Quiz Scores To Zero</button>
 </form>
 
 <br>
-    <a href="http://localhost:8000/feynman_technique_quiz/" target="_blank" button type="button" class="btn btn-lg btn-primary" disabled>Return To Feynman Technique Quiz</button></a>
+    <a href="http://localhost:8000/multiple_choice_quiz/" target="_blank" button type="button" class="btn btn-lg btn-primary" disabled>Return To Multiple Choice Quiz</button></a>
 
 <center>
 
 
+<h3>{{value}}</h3>
+
+<br>
+<br>
 
 
 <br>
-<br>
 
-        <h3 style="color:blue">An excellent answer would consist of the following information .....</h3><h3 style="color:green;">{{ correct_answer }}</h3>
-
-<br>
+      {% if correct_answer == user_selected_answer %}
+        <img src="/static/images/two_thumbs_up.png" style="width:125px;height:100px;">
+        <h3 style="color:blue">Yep!...the correct answer is</h3><h3 style="color:green">{{ user_selected_answer }} </h3>
+      {% else %}
+        <img src="/static/images/thumbs_down.png" style="width:125px;height:100px;">
+        <h3 style="color:blue">Nope!....the correct answer is</h3><h3 style="color:green"> {{ correct_answer }}</h3><br>
+        <h3 style="color:blue"> Your answer was</h3><h3 style="color:red"> {{ user_selected_answer }} </h3>
+      {% endif %}
 
 <!-- if the 7th element is a string then "post" included in /image/post/*.png -->
-    {% if image.7 == "p" %}
+{% if image.7 == "p" and correct_answer == user_selected_answer %}
             <img src= "{{ image }}" style="width:250px;height:250px;">
+{% endif %}
+
+
+
+<!--<h1>{{ question.question_text }}</h1>
+
+<h1>This is the results page!</h1>-->
+
+
+{% for answer in question.mc_answer_set.all %}
+    {% if answer.votes = value %}
+        <h3>You chose {{ answer.answer_text }}</h3>
     {% endif %}
+    <li>{{ answer.answer_text }} -- {{ answer.votes }} vote{{ answer.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<!--<a href="{% url 'giturdone_quiz:multiple_choice_quiz_detail' question.id %}">Vote again?</a>-->
+
+
 
 <br>
 <br>
 <br>
- <p style="color:blue;" style="font-size:10px">Rate Your Answer By Clicking On A Button Below<br><br>
- Mastery - You have mastered this particular question.<br>
- Needs Improvement - Your answer and understanding of the subject matter needs improvement.<br>
- Hole - There is a significant hole in your knowledge in regards to this question.<br>
- </p>
-
-
-    <button type="button" class="btn btn-primary" onclick="">Mastery</button>
-    {{ knowledge_mastery }}
-
-    <button type="button" class="btn btn-primary">Needs Improvement</button>
-    {{ knowledge_needs_improvement }}
-
-    <button type="button" class="btn btn-danger">Hole</button>
-    {{ knowledge_black_hole }}
-
 <br>
-<!--
-    <button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
-
-    <p id="demo"></p>
-
 <br>
-
-
-
-    <button type="button"
-onclick="document.getElementById('add_data').innerHTML = add_data">
-Click me to display Mastery Value.</button>
-
-    <p id="add_data">{{ knowledge_mastery }}</p>
-
-
-
-
-<button type="button" onclick="myFunction()">Try My Function</button>
-
-
-
-<p id="test"></p>
-
-
-
-<script>
- function myFunction()
- document.getElementById("test").innerHTML = 5 + 6;
- {
-
-    { % for item in correct_answer % }
-        {{ item }}
-    { % endfor % }
-
-    <h1>Your in my function!</h1>
-    {% if image.7 == "p" %}
-            <img src= "{{ image }}" style="width:250px;height:250px;">
-    {% endif %}
- }
-
-</script>
-
--->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

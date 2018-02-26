@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from . models import Answer, Question
 import random
@@ -14,6 +15,7 @@ from . user_response import user_response
 from processors import custom_processor
 from django.db.models import Sum
 from . models import Ftq_Question, Ftq_Answer
+from . models import Mc_Question, Mc_Answer
 
 # TODO add comments to this module
 # TODO add a button that allows computer user to zero out their scores
@@ -178,6 +180,8 @@ def tools(request):
     return render(request, 'giturdone_quiz/tools.html')
 
 
+# The functions below are for the Feynman Technique quiz
+
 
 def feynman_technique_quiz(request):
     ftq_questions = Ftq_Question.objects.all()
@@ -226,7 +230,64 @@ def ftq_reset_scores(request):
     return render(request, 'giturdone_quiz/ftq_reset_scores.html')
 
 
+# The functions below are the views for the multiple choice quiz
+
 
 
 def multiple_choice_quiz(request):
-    return render(request, 'giturdone_quiz/multiple_choice_quiz.html')
+    latest_question_list = Mc_Question.objects.order_by('-pub_date')[:5]
+    context = {'latest_question_list': latest_question_list}
+    return render(request, 'giturdone_quiz/multiple_choice_quiz.html', context)
+
+
+def multiple_choice_quiz_detail(request, question_id):
+    question = get_object_or_404(Mc_Question, pk=question_id)
+    return render(request, 'giturdone_quiz/multiple_choice_quiz_detail.html', {'question': question})
+
+
+def vote(request, question_id):
+    question = get_object_or_404(Mc_Question, pk=question_id)
+    try:
+        selected_answer = question.mc_answer_set.get(pk=request.POST['answer'])
+        user_selected_answer = smart_text(selected_answer)
+        f = open('giturdone_quiz/selected_answer.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        f.write(str(user_selected_answer))
+        f.close()
+    except (KeyError, Answer.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'giturdone_quiz/multiple_choice_quiz_detail.html', {
+            'question': question,
+            'error_message': "You didn't select an answer.",
+        })
+    else:
+        selected_answer.votes += 1
+        selected_answer.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        # Note: giturdone_quiz:multiple_choice_quiz_results calls the multiple_choice_quiz_results function
+        context = {'selected_answer': selected_answer}
+        return HttpResponseRedirect(reverse('giturdone_quiz:multiple_choice_quiz_results', args=(question.id,)))
+        #return redirect('giturdone_quiz:multiple_choice_quiz_results', kwargs=(context, question_id))
+
+
+def multiple_choice_quiz_results(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    user_selected_answer = ""
+    f = open('giturdone_quiz/selected_answer.py', 'rb')
+    user_selected_answer = f.read()
+    f.close()
+    user_selected_answer = smart_text(user_selected_answer)
+    answers = Mc_Answer.objects.filter(question_id=question.id)
+    for answer in answers:
+        correct_answer = answer.correct_answer
+        image = answer.image
+    image = str(answer.image)
+    # Get the image "post_image/filename" for my_answer
+    # Concatenates "/media/" + "post_image/filename"
+    image = ("/media/" + (image))
+    context = {'question': question, 'user_selected_answer': user_selected_answer,
+    'correct_answer': correct_answer, 'image': image}
+    return render(request, 'giturdone_quiz/multiple_choice_quiz_results.html', context )
+
