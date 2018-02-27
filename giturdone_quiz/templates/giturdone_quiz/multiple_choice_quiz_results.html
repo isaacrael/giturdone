@@ -15,7 +15,7 @@
     <h3 align="left" style="color:Blue;">Wrong Answers: {{ total_wrong_answers }}</h3>
 -->
 
- <form action="{% url 'giturdone_quiz:ftq_reset_scores' %}" method="post">
+<form action="{% url 'giturdone_quiz:ftq_reset_scores' %}" method="post">
 {% csrf_token %}
   <table>{{ form.as_table }}</table>
    <p><label for="id_name"> Click Button To Reset Your Scores To Zero:</label>

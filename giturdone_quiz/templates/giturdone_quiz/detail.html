@@ -1,13 +1,13 @@
 {% extends 'giturdone_quiz/base.html' %}
 
-{% block title %}Git Ur Done Resources{% endblock %}
+{% block title %}Git Ur Done Detail{% endblock %}
 
 
 
 {% block body %}
 <div class="w3-container w3-yellow">
 
-    <h2>{{ question.question_text }}</h2>
+    <h2 style="color:blue">{{ question.question_text }}</h2>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <form action="{% url 'giturdone_quiz:results' question.id %}" method="post">
     {% csrf_token %}
