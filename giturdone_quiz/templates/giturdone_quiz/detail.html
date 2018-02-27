@@ -7,6 +7,10 @@
 {% block body %}
 <div class="w3-container w3-yellow">
 
+    <h1 style="text-align:center; color:blue;">Short Answer Quiz</h1>
+    <br>
+    <br>
+
     <h2 style="color:blue">{{ question.question_text }}</h2>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <form action="{% url 'giturdone_quiz:results' question.id %}" method="post">
