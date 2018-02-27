@@ -1,116 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>FT Quiz Results</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+{% extends 'giturdone_quiz/base.html' %}
 
-<!-- TODO add mark up to display button to allow computer user to zero out score vars -->
-<!-- TODO replace Correct! and Wrong! with icon possibly thumbs up and thumbs down future versions may include random displaying of icons-->
-<!-- TODO future versions could display java script or CSS animations -->
-<!-- TODO draw a red box around existing text in score calculator info -->
-<!-- TODO add a Feynman Technique Quiz possibly incorporating SRS functionality-->
-<!-- TODO add images to go along with answers to incorporate visual senses while learning -->
+{% block title %}FTQ Results{% endblock %}
 
 
 
-
-
-
-<style>
-a:link {
-    color: black;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:visited {
-    color: blue;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: underline;
-}
-a:active {
-    color: purple;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-
-.rectangle {
-    width: 400px;
-    height: 200px;
-    background: red;
-}
-</style>
-
-</head>
-<body>
-<div class="w3-container" style="background-color: red;">
-{% if request.user.is_authenticated %}
-  <h1>Welcome {% if request.user.first_name %}
-      {{ request.user.first.name }}
-      {% else %}
-      {{ request.user.username }}
-      {% endif %}
-      - Git Ur Done<br>
-      <img src="/static/images/git.png" style="width:50px;height:50px;"> <font size="1">{{ DATE_TIME }}</font>
-  </h1>
-{% else %}
-<h1> Welcome Git Ur Done</h1> <img src="/static/images/git.png" style="width:50px;height:50px;">
-{% endif %}
-</div>
-
-
+{% block body %}
 
 <div class="w3-container w3-yellow">
-<img src="/static/images/dj.png" style="width:25" align="right">
-<br>
-{% if request.user.is_authenticated %}
-<h3>
-    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/" target="_blank">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
-</h3>
-{% else %}
-<h3>
-<a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/account/register" target="_blank">Register |</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>
-</h3>
-{% endif %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-
-<!--
-    <h3 align="left" style="color:Blue;">Grade: {{ Grade }}</h3>
-    <h3 align="left" style="color:Blue;">Score: {{ score }} %</h3>
-    <h3 align="left" style="color:Blue;">Total Questions Answered: {{ total_questions_answered }}</h3>
-    <h3 align="left" style="color:Blue;">Correct Answers: {{ total_correct_answers }}</h3>
-    <h3 align="left" style="color:Blue;">Wrong Answers: {{ total_wrong_answers }}</h3>
--->
-
- <form action="{% url 'giturdone_quiz:ftq_reset_scores' %}" method="post">
-{% csrf_token %}
-  <table>{{ form.as_table }}</table>
-   <p><label for="id_name"> Click Button To Reset Your Scores To Zero:</label>
-<!--<input align="left" class="textinput textInput form-control size=50" id="id_name" maxlength="50" name="textfield" type="text" style="width:400px"/></p>
-  <input type="submit" style=color:red value="Reset Scores To Zero" /></p>-->
-<br>
-  <button type="submit" class="btn btn-danger btn-sm id="id_name">Reset Feynman Quiz Scores To Zero</button>
-</form>
-
-<br>
-    <a href="http://localhost:8000/feynman_technique_quiz/" target="_blank" button type="button" class="btn btn-lg btn-primary" disabled>Return To Feynman Technique Quiz</button></a>
 
 <center>
 
@@ -149,106 +46,54 @@ a:active {
     {{ knowledge_black_hole }}
 
 <br>
-<!--
-    <button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
-
-    <p id="demo"></p>
-
-<br>
-
-
-
-    <button type="button"
-onclick="document.getElementById('add_data').innerHTML = add_data">
-Click me to display Mastery Value.</button>
-
-    <p id="add_data">{{ knowledge_mastery }}</p>
-
-
-
-
-<button type="button" onclick="myFunction()">Try My Function</button>
-
-
-
-<p id="test"></p>
-
-
-
-<script>
- function myFunction()
- document.getElementById("test").innerHTML = 5 + 6;
- {
-
-    { % for item in correct_answer % }
-        {{ item }}
-    { % endfor % }
-
-    <h1>Your in my function!</h1>
-    {% if image.7 == "p" %}
-            <img src= "{{ image }}" style="width:250px;height:250px;">
-    {% endif %}
- }
-
-</script>
-
--->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 </center>
+<p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </p>
 </div>
-<!--<div class="w3-container w3-blue">
-  <h5>
-
-  </h5>
-  <p><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
-Software Developed By A Nerd For Nerds</center></p>
-</div>-->
-<div class="navbar navbar-default navbar-fixed-bottom" style="background-color: blue;">
-    <div class="container">
-        <p class="navbar text"><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
-Software Developed By A Nerd For Nerds</center></p>
-    </div>
-</div>
-
-</head>
-</body>
-</html>
+{% endblock %}
