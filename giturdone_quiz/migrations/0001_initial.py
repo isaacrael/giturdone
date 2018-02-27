@@ -42,6 +42,24 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Mc_Answer',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('answer_text', models.CharField(max_length=200)),
+                ('votes', models.IntegerField(default=0)),
+                ('correct_answer', models.CharField(default=b'Linus Torvalds', max_length=200)),
+                ('image', models.ImageField(upload_to=b'post_image', blank=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Mc_Question',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('question_text', models.CharField(max_length=200)),
+                ('pub_date', models.DateTimeField(verbose_name=b'date published')),
+            ],
+        ),
+        migrations.CreateModel(
             name='Question',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -49,6 +67,11 @@ class Migration(migrations.Migration):
                 ('pub_date', models.DateTimeField(verbose_name=b'date published')),
                 ('category', models.CharField(max_length=30)),
             ],
+        ),
+        migrations.AddField(
+            model_name='mc_answer',
+            name='question',
+            field=models.ForeignKey(to='giturdone_quiz.Mc_Question'),
         ),
         migrations.AddField(
             model_name='ftq_answer',
