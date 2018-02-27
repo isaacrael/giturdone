@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<body lang="en">
+<head>
+<!--<link rel="stylesheet" type="text/css" href="/static/css/my_site_style.css">-->
+    <meta charset="UTF-8">
+    <title>Git UR Done</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+<style>
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: blue;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active {
+    color: purple;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #00A79D;
+  /*opacity: 0.5;*/
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+
+</style>
+
+<body>
+
+
+<div class="w3-container" style="background-color: red;">
+{% if request.user.is_authenticated %}
+  <h1>Welcome {% if request.user.first_name %}
+      {{ request.user.first.name }}
+      {% else %}
+      {{ request.user.username }}
+      {% endif %}
+      - Git Ur Done<br>
+      <img src="/static/images/git.png" style="width:50px;height:50px;"> <font size="1">{{ DATE_TIME }}</font>
+  </h1>
+{% else %}
+<h1> Welcome Git Ur Done</h1> <img src="/static/images/git.png" style="width:50px;height:50px;">
+{% endif %}
+</div>
+
+
+
+<div class="w3-container w3-blue">
+<img src="/static/images/dj.png" style="width:25" align="right">
+<br>
+{% if request.user.is_authenticated %}
+<h3>
+    <a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/quiz_selection/" target="_blank">Quiz Selection |</a> <a href="http://localhost:8000/quiz/resources/" target="_blank">Resources |</a>  <a href="http://localhost:8000/tools/" target="_blank">Tools |</a> <a href="http://localhost:8000/account/logout" target="_blank">Logout</a>
+</h3>
+{% else %}
+<h3>
+<a href="http://localhost:8000/" target="_blank">About |</a>   <a href="http://localhost:8000/account/register" target="_blank">Register |</a>    <a href="http://localhost:8000/account/login/"target="_blank" >Login</a>
+</h3>
+{% endif %}
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p><center><h3>What in the world is Git Ur Done?  Git Ur Done is a web software application developed by Gil Rael using the Python Django Web Framework
+that tests your Git knowledge and helps you to learn to use Git.  What is Git?  Git is a software version control system used by software engineers in software development projects.
+Please, register in order to begin using Git Ur Done.  Once, you have registered you can begin to use the application to learn
+Git version control and you will also have access to our resources page with some of the best videos and websites on
+Git to supplement your learning here on Git Ur Done.
+
+<br>
+<br>
+<br>
+<img src="/static/images/git_overview.png" style="width:300px;height:300px;" align="middle">
+</p></center></h3>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+<!--<div class="w3-container w3-red">
+  <h5>
+
+  </h5>
+  <p><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
+Software Developed By A Nerd For Nerds</center></p>
+</div>
+<div>-->
+<div class="navbar navbar-default navbar-fixed-bottom" style="background-color: red;">
+    <div class="container">
+        <p class="navbar text"><center>Web Design & Application Development By - <a href="http://facebook.com/gil.rael.37/" target="_blank">Gil Rael</a><br>
+Software Developed By A Nerd For Nerds</center></p>
+    </div>
+</div>
+</head>
+</body>
+</html>
