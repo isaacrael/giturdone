@@ -1,9 +1,0 @@
-# TODO rename this file to branch tester or something similar
-
-
-In the Features/Score_Calculator Branch
-
-selected_answer.total_questions_answered = selected_answer.total_number_correct_answers + selected_answer.total_number_wrong_answers
-        context = {'latest_question_list': latest_question_list, 'answer': user_answer,
-        'question': question, 'correct_answer': correct_answer, 'total_number_correct_answers': selected_answer.total_number_correct_answers,
-        'total_number_wrong_answers': selected_answer.total_number_wrong_answers, 'total_questions_answered': selected_answer.total_questions_answered}

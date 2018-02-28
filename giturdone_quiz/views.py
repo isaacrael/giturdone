@@ -16,6 +16,7 @@ from processors import custom_processor
 from django.db.models import Sum
 from . models import Ftq_Question, Ftq_Answer
 from . models import Mc_Question, Mc_Answer
+import re
 
 # TODO add comments to this module
 # TODO add a button that allows computer user to zero out their scores
@@ -50,8 +51,29 @@ def quiz_selection(request):
 
 # git_quiz displays the quiz selected by user in the Quiz Selection page
 
-def git_quiz(request):
-    if user_response == 'None':
+#def git_quiz(request):
+def quiz(request):
+    if request.method == 'POST':
+        user_response = request.POST.get('textfield', None)
+        user_response = smart_text(user_response)
+#        f = open('giturdone_quiz/user_response.py', 'w')
+#        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+#        f.write(str(user_response))
+#        f.close()
+        f = open('giturdone_quiz/user_response.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        f.write('user_response = ' + repr(str(user_response)))
+        f.close()
+    else:
+        f = open('giturdone_quiz/user_response.py', 'rb')
+        user_response = f.read()
+        f.close()
+        # regular expression below reads the text between single quotes
+        user_response=re.findall(r"'(.*?)'", user_response, re.DOTALL)
+        # reads the first element in the user_response list
+        user_response=user_response[0]
+        user_response = smart_text(user_response)
+    if user_response == '':
         return render(request, 'giturdone_quiz/index.html')
     if user_response == '1':
         latest_question_list = Question.objects.filter(category="Git Basics")
