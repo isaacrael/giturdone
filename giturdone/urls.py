@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^quiz/', include('giturdone_quiz.urls', namespace="giturdone_quiz")),
+    url(r'^quiz/$', 'giturdone_quiz.views.quiz', name='index'),
     url(r'^quiz_selection/', 'giturdone_quiz.views.quiz_selection', name='quiz_selection'),
     url(r'^short_answer_quiz_categories/', 'giturdone_quiz.views.short_answer_quiz_categories', name='short_answer_quiz_categories'),
     url(r'^$', 'giturdone_quiz.views.index', name='index'),
