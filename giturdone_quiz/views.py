@@ -29,9 +29,12 @@ from . models import Mc_Question, Mc_Answer
 # Note the index page used in the index function below tells the computer
 # user about the application and what it is meant to be used for
 
+# The following function renders the About Page
+
 def index(request):
     return render(request, 'index.html')
 
+# The following functions are for the Short Answer Quiz
 # quiz_selection page takes a user_response as input and displays associated quiz on Sensei Quiz page
 
 def quiz_selection(request):
@@ -175,12 +178,13 @@ def short_answer_quiz_categories(request):
     else:
         return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
 
+# The following function renders the Tools Page
 
 def tools(request):
     return render(request, 'giturdone_quiz/tools.html')
 
 
-# The functions below are for the Feynman Technique quiz
+# The functions below are for the Feynman Technique Quiz
 
 
 def feynman_technique_quiz(request):
@@ -230,7 +234,7 @@ def ftq_reset_scores(request):
     return render(request, 'giturdone_quiz/ftq_reset_scores.html')
 
 
-# The functions below are the views for the multiple choice quiz
+# The functions are for the Multiple Choice Quiz
 
 
 

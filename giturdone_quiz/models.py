@@ -5,6 +5,8 @@ from django.utils import timezone
 
 # Create your models here.
 
+# The following Question & Answer models are for the Short Answer Quiz
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -33,6 +35,9 @@ class Answer(models.Model):
         return self.answer_text
 
 
+# The following Ftq_Question & Ftq_Answer models are for the
+# Feynman Technique Quiz
+
 class Ftq_Question(models.Model):
     question_text = models.CharField(max_length=400)
     pub_date = models.DateTimeField('date published')
@@ -59,6 +64,10 @@ class Ftq_Answer(models.Model):
     def __unicode__(self):
         return self.answer_text
 
+
+
+# The following Mc_Question & Mc_Answer models are for the
+# Feynman Technique Quiz
 
 class Mc_Question(models.Model):
     question_text = models.CharField(max_length=200)
