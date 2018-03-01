@@ -24,6 +24,9 @@ urlpatterns = [
     url(r'^multiple_choice_quiz/(?P<question_id>[0-9]+)/$', 'giturdone_quiz.views.multiple_choice_quiz_detail', name='multiple_choice_quiz_detail'),
     url(r'^multiple_choice_quiz/(?P<question_id>[0-9]+)/vote/$', 'giturdone_quiz.views.vote', name='vote'),
     url(r'^multiple_choice_quiz/(?P<question_id>[0-9]+)/results/$', 'giturdone_quiz.views.multiple_choice_quiz_results', name='multiple_choice_quiz_results'),
+    url(r'^short_answer_quiz_graphs/', 'giturdone_quiz.views.short_answer_quiz_graphs', name='short_answer_quiz_graphs'),
+
+
 #    url(r'^(?P<question_id>[0-9]+)/vote/$', 'giturdone_quiz.views.vote', name='vote'),
 #    url(r'^(?P<question_id>[0-9]+)/vote/results/$', 'giturdone_quiz.views.multiple_choice_quiz_results', name='multiple_choice_quiz_results'),
     # ex: /quiz/5/vote/
