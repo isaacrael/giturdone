@@ -200,6 +200,10 @@ def short_answer_quiz_categories(request):
     else:
         return render(request, 'giturdone_quiz/short_answer_quiz_categories.html')
 
+
+def short_answer_quiz_graphs(request):
+    return render(request, 'giturdone_quiz/short_answer_quiz_graphs.html')
+
 # The following function renders the Tools Page
 
 def tools(request):
