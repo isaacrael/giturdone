@@ -178,6 +178,19 @@ def results(request, question_id):
             Grade = "D"
         elif score in range(0,59):
             Grade = "F"
+        new_answers = Answer.objects.all()
+        f = open('giturdone_quiz/total_correct_answers_field.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        """
+        for answer in new_answers:
+            my_dict = {}
+            my_dict['My_Answer'] = answer.answer_text
+            f.write(str(my_dict['My_Answer']))
+            my_dict['My_Total_Correct_Answers'] = answer.total_correct_answers
+            str(my_dict)
+            f.write(my_dict['My_Total_Correct_Answers'])
+        f.close()
+        """
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
         'question': question, 'correct_answer': correct_answer, 'Grade':Grade,
         'score':score, 'total_questions_answered': ttl_questions_answered,
