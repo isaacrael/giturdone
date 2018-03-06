@@ -17,6 +17,10 @@
 <h1 style="color:blue"> Short Answer Quiz Graphs </h1>
 </center>
 <br>
+
+<!--<h3>{{question1}} .... {{question2}}...{{question3}}....{{question4}}....{{question5}}</h3>-->
+
+
 <canvas id="myChart" width="400" height="400"></canvas>
 <script>
 
@@ -24,10 +28,10 @@ var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["git quiz", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["{{question1}}", "{{question2}}", "{{question3}}", "{{question4}}", "{{question5}}"],
         datasets: [{
-            label: 'Top 6 Wrong Answers',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Questions Most Frequently Answered Incorrectly',
+            data: [{{question1_total_wrong_answers}}, {{question2_total_wrong_answers}}, {{question3_total_wrong_answers}}, {{question4_total_wrong_answers}}, {{question5_total_wrong_answers}}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.8)',
                 'rgba(54, 162, 235, 0.8)',
