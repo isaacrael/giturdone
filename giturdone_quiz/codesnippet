@@ -11,3 +11,55 @@ git init
 1
 1
 1
+
+>>> ordered_answers = Answer.objects.order_by('answer_text')
+>>> print(ordered_answers)
+[<Answer: C>, <Answer: Finland>, <Answer: Helsinki>, <Answer: Linus Torvalds>, <Answer: Oregon>, <Answer: git add *>, <Answer: git add <directory>>, <Answer: git add <filename>>, <Answer: git branch>, <Answer: git branch -d <branch>>, <Answer: git checkout -b <branch>>, <Answer: git clean -n>, <Answer: git clone>, <Answer: git commit --<file>>, <Answer: git commit --amend>, <Answer: git commit -m "message">, <Answer: git config --global --edit>, <Answer: git config --global alias.<alias-name> <git-command>>, <Answer: git config --global user.email <email>>, <Answer: git config --global user.name <name>>, '...(remaining elements truncated)...']
+
+
+# Algorithm to solve six questions with most wrong answers
+
+>>> count = 0
+>>> for answer in wrong_answers_ordered:
+...    count=count+1
+...    total = count
+...    print(count)
+>>> print(total)
+57
+>>> number_of_elements = total - 7
+>>> print(number_of_elements)
+50
+
+>>> wrong_answers_ordered = Answer.objects.order_by('total_wrong_answers')
+>>> wrong_answers_ordered.values()
+[{'total_correct_answers': 6, 'image': u'', 'answers': 0, 'answer_text': u'git init', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 1, u'question_id': 1}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git log', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 2, u'question_id': 2}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git clone', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 3, u'question_id': 3}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git add <directory>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 4, u'question_id': 4}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git config user.name <name>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 5, u'question_id': 5}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git diff', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 6, u'question_id': 8}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git status', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 7, u'question_id': 7}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git commit -m "message"', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 8, u'question_id': 6}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git checkout -b <branch>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 9, u'question_id': 9}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git branch', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 10, u'question_id': 10}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git merge <branch>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 11, u'question_id': 11}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git reflog', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 12, u'question_id': 14}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git rebase <base>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 13, u'question_id': 13}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git commit --amend', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 14, u'question_id': 12}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git reset <file>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 15, u'question_id': 17}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git clean -n', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 16, u'question_id': 15}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git revert <commit>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 17, u'question_id': 16}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git remote add <name> <url>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 18, u'question_id': 18}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git fetch <remote> <branch>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 19, u'question_id': 19}, {'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git pull <remote>', 'total_wrong_answers': 0, 'correct_answer': u'Linus Torvalds', u'id': 20, u'question_id': 20}, '...(remaining elements truncated)...']
+
+>>> type(wrong_answers_ordered)
+<class 'django.db.models.query.QuerySet'>
+
+>>> wrong_answers_ordered = wrong_answers_ordered.values()
+>>> type(wrong_answers_ordered)
+<class 'django.db.models.query.ValuesQuerySet'>
+
+>>> total = 56
+>>> print(wrong_answers_ordered[total])
+{'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git diff --cached', 'total_wrong_answers': 1, 'correct_answer': u'Linus Torvalds', u'id': 27, u'question_id': 27}
+
+>>> total = 56
+
+print(wrong_answers_ordered[total])
+
+{'total_correct_answers': 0, 'image': u'', 'answers': 0, 'answer_text': u'git diff --cached', 'total_wrong_answers': 1, 'correct_answer': u'Linus Torvalds', u'id': 27, u'question_id': 27}
+
+>>> my_dict = wrong_answers_ordered[total]
+>>> print my_dict["total_wrong_answers"]
+1
+
+
+value = my_dict["question_id"]
+
+q = Question.objects.filter(id=value)
+
+>>> print(q)
+[<Question: What command will show difference between staged changes and last commit?>]
+>>>

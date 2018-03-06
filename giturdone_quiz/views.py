@@ -178,6 +178,19 @@ def results(request, question_id):
             Grade = "D"
         elif score in range(0,59):
             Grade = "F"
+        new_answers = Answer.objects.all()
+        f = open('giturdone_quiz/total_correct_answers_field.py', 'w')
+        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        """
+        for answer in new_answers:
+            my_dict = {}
+            my_dict['My_Answer'] = answer.answer_text
+            f.write(str(my_dict['My_Answer']))
+            my_dict['My_Total_Correct_Answers'] = answer.total_correct_answers
+            str(my_dict)
+            f.write(my_dict['My_Total_Correct_Answers'])
+        f.close()
+        """
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
         'question': question, 'correct_answer': correct_answer, 'Grade':Grade,
         'score':score, 'total_questions_answered': ttl_questions_answered,
@@ -202,7 +215,58 @@ def short_answer_quiz_categories(request):
 
 
 def short_answer_quiz_graphs(request):
-    return render(request, 'giturdone_quiz/short_answer_quiz_graphs.html')
+    # do the work
+    # Sort answers by total_wrong_answers_field
+    wrong_answers_ordered = Answer.objects.order_by('total_wrong_answers')
+    # Set counter to 0
+    count = 0
+    # Count total answers
+    for answer in wrong_answers_ordered:
+        count = count + 1
+    total = count
+    # assign last and first elements in range
+    last_element_in_range = total
+    first_element_in_range = last_element_in_range - 6
+    wrong_answers_ordered = Answer.objects.order_by('total_wrong_answers')
+    wrong_answers_ordered = wrong_answers_ordered.values()
+    wrong_answers_ordered = wrong_answers_ordered.order_by("total_wrong_answers")
+    index = first_element_in_range
+    # create empty context dictionary
+    context = {}
+    for values in range(first_element_in_range, last_element_in_range):
+        wrong_answers_ordered = Answer.objects.order_by('total_wrong_answers')
+        wrong_answers_ordered = wrong_answers_ordered.values()
+        my_dict = wrong_answers_ordered[index]
+        id = my_dict["question_id"]
+        q = Question.objects.get(id=id)
+        if index == first_element_in_range:
+            question1 = Question.objects.get(pk=id)
+            question1_total_wrong_answers = my_dict["total_wrong_answers"]
+            context["question1"] = question1
+            context["question1_total_wrong_answers"] = question1_total_wrong_answers
+        elif index == first_element_in_range + 1:
+            question2 = Question.objects.get(pk=id)
+            question2_total_wrong_answers = my_dict["total_wrong_answers"]
+            context["question2"] = question2
+            context["question2_total_wrong_answers"] = question2_total_wrong_answers
+        elif index == first_element_in_range + 2:
+            question3 = Question.objects.get(pk=id)
+            question3_total_wrong_answers = my_dict["total_wrong_answers"]
+            context["question3"] = question3
+            context["question3_total_wrong_answers"] = question3_total_wrong_answers
+        elif index == first_element_in_range + 3:
+            question4 = Question.objects.get(pk=id)
+            question4_total_wrong_answers = my_dict["total_wrong_answers"]
+            context["question4"] = question4
+            context["question4_total_wrong_answers"] = question4_total_wrong_answers
+        elif index == first_element_in_range + 4:
+            question5 = Question.objects.get(pk=id)
+            question5_total_wrong_answers = my_dict["total_wrong_answers"]
+            context["question5"] = question5
+            context["question5_total_wrong_answers"] = question5_total_wrong_answers
+        if index != first_element_in_range + 5:
+            index = index + 1
+    return render(request, 'giturdone_quiz/short_answer_quiz_graphs.html', context)
 
 # The following function renders the Tools Page
 
