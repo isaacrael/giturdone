@@ -1,1 +1,0 @@
-Note: the files in this dir are simply backups of a few files used in the application
