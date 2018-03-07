@@ -36,7 +36,7 @@ def index(request):
     return render(request, 'index.html')
 
 # The following functions are for the Short Answer Quiz
-# quiz_selection page takes a user_response as input and displays associated quiz on Sensei Quiz page
+# quiz_selection page takes a user_response as input and writes the response to giturdone_quiz/user_response.py
 
 def quiz_selection(request):
     if request.method == 'POST':
@@ -48,20 +48,15 @@ def quiz_selection(request):
         f.close()
     return render(request, 'giturdone_quiz/quiz_selection.html')
 
+# The function below will take the short answer quiz category user response and display
+# the questions for the selected category
 
-# git_quiz displays the quiz selected by user in the Quiz Selection page
-
-#def git_quiz(request):
 def quiz(request):
     if request.method == 'POST':
         user_response = request.POST.get('textfield', None)
         user_response = smart_text(user_response)
-#        f = open('giturdone_quiz/user_response.py', 'w')
-#        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
-#        f.write(str(user_response))
-#        f.close()
         f = open('giturdone_quiz/user_response.py', 'w')
-        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
+        # the line below writes the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
         f.write('user_response = ' + repr(str(user_response)))
         f.close()
     else:
@@ -178,19 +173,6 @@ def results(request, question_id):
             Grade = "D"
         elif score in range(0,59):
             Grade = "F"
-        new_answers = Answer.objects.all()
-        f = open('giturdone_quiz/total_correct_answers_field.py', 'w')
-        # the line below write the text 'user_response = ' and concats the user_response the str function gets rid of u in front of string
-        """
-        for answer in new_answers:
-            my_dict = {}
-            my_dict['My_Answer'] = answer.answer_text
-            f.write(str(my_dict['My_Answer']))
-            my_dict['My_Total_Correct_Answers'] = answer.total_correct_answers
-            str(my_dict)
-            f.write(my_dict['My_Total_Correct_Answers'])
-        f.close()
-        """
         context = {'latest_question_list': latest_question_list, 'answer': user_answer,
         'question': question, 'correct_answer': correct_answer, 'Grade':Grade,
         'score':score, 'total_questions_answered': ttl_questions_answered,
